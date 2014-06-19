@@ -1,0 +1,9 @@
+*.swp
+*.swo
+.sass-cache
+.local
+*.DS_Store
+.idea/
+
+/source/vendors/
+/node_modules/

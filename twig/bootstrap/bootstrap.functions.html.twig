@@ -1,0 +1,76 @@
+{# IMPORTANT!! DO NOT EDIT THIS GENERATED FILE. READ "README.md" #}
+
+{% macro button(title, type, options) %}
+	{% import _self as bs %}
+
+	{% if options is null %}
+		{% set options = {} %}
+	{% endif %}
+
+	{% if options['icon-align'] is not defined or (options['icon-align'] != 'left' and options['icon-align'] != 'right') %}
+		{% set options = options|merge({ 'icon-align': 'left' }) %}
+	{% endif %}
+
+	{% if options['navbutton'] is not defined %}
+		{% set options = options|merge({ 'navbutton': false }) %}
+	{% endif %}
+
+	{% if options.dropdown is not defined %}
+		{% set options = options|merge({'dropdown': false}) %}
+	{% endif %}
+
+	{% set attr = options.attr|default({}) %}
+	<button type="{{ type|default("submit") }}"
+			id="{{ options.id|default("") }}"
+			class="btn {{ options.class|default("btn-default") }}{% if options['navbutton'] == true %} navbar-btn{% endif %}"
+			value="{{ title|default("no title")|raw }}"
+			{% if options.dropdown == true %} data-toggle="dropdown"{% endif %}
+			{% if type == "submit" %} data-loading-text="Laden..."{% endif %}
+			{% for attrname,attrvalue in attr %} {{attrname}}="{{attrvalue}}"{% endfor %}
+		>
+
+		{% if options.icon is defined and options.icon != "" %}
+			{% if options['icon-align'] != 'right' %}{{ bs.icon(options.icon) }}{% endif %}
+		{% endif %}
+
+		{{ title|default("no title")|raw }}
+
+		{% if options.icon is defined and options.icon != "" and options['icon-align'] is defined %}
+			{% if options['icon-align'] == 'right' %}{{ bs.icon(options.icon, { 'class': 'fa-aligned-right' }) }}{% endif %}
+		{% endif %}
+	</button>
+{% endmacro %}
+
+{% macro icon(iconName, options) %}
+	{% if options is null %}
+		{% set options = {} %}
+	{% endif %}
+
+	<i class="fa fa-{{ iconName }} {{ options.class|default("") }}"></i>
+{% endmacro %}
+
+
+
+{% macro title(title, options) %}
+	{% import _self as bs %}
+
+	<div class="title">
+		{% if options is null %}
+			{% set options = {} %}
+		{% endif %}
+
+		{% if options['icon-align'] is not defined or (options['icon-align'] != 'left' and options['icon-align'] != 'right') %}
+			{% set options = options|merge({'icon-align': 'left'}) %}
+		{% endif %}
+
+		{% if options.icon is defined %}
+			{% if options['icon-align'] != 'right' %}{{ bs.icon(options.icon) }}{% endif %}
+		{% endif %}
+
+		{{ title|default("no title")|raw }}
+
+		{% if options.icon is defined and options.icon != "" and options['icon-align'] is defined %}
+			{% if options['icon-align'] == 'right' %}{{ bs.icon(options.icon, { 'class': 'fa-aligned-right' }) }}{% endif %}
+		{% endif %}
+	</div>
+{% endmacro %}

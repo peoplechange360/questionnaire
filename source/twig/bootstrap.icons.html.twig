@@ -1,0 +1,7 @@
+{% macro icon(iconName, options) %}
+	{% if options is null %}
+		{% set options = {} %}
+	{% endif %}
+
+	<i class="fa fa-{{ iconName }} {{ options.class|default("") }}"></i>
+{% endmacro %}
