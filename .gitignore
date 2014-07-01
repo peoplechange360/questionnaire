@@ -7,3 +7,8 @@
 
 /source/vendors/
 /node_modules/
+
+# Eclispe files
+/.buildpath
+/.project
+/.settings
