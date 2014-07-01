@@ -1,0 +1,16 @@
+{% extends "layout/question.main.html.twig" %}
+
+{% block content %}
+	{%- set type = type|default("input") -%}
+
+	<ul class="list-group list-group-striped">
+		{%- for anwser in question.anwsers -%}
+			<li class="list-group-item">
+				<div class="{{ type }}">
+					<label for="id_{{ anwser.form.name }}">{{ anwser.form.label }}</label>
+					<input class="form-control" id="id_{{ anwser.form.name }}" type="{{ type }}" data-label="{{ anwser.form.label }}" name="{{ anwser.form.name }}"{% if anwser.form.value %} value="{{ anwser.form.value }}"{% endif %}>
+				</div>
+			</li>
+		{%- endfor -%}
+	</ul>
+{% endblock %}

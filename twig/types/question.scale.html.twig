@@ -1,0 +1,30 @@
+{% extends "layout/question.main.html.twig" %}
+
+{% block content %}
+
+	<table class="table" data-type="scale">
+		<thead>
+			<tr>
+				<th class="title">&nbsp;</th>
+				{%- for anwser in question.anwsers.0.anwsers -%}
+					<th data-value="{{ anwser.form.value }}">{{ anwser.form.label }}</th>
+				{%- endfor -%}
+			</tr>
+		</thead>
+		<tbody>
+			{%- for header in question.anwsers -%}
+			<tr>
+				<td class="title">{{ header.title }}</td>
+				{%- for anwser in header.anwsers -%}
+					<td>
+						<label>
+							<input type="radio" data-label="{{ anwser.form.label }}" name="{{ anwser.form.name }}"{% if anwser.form.checked %} checked="checked"{% endif %}{% if anwser.form.value %} value="{{ anwser.form.value }}"{% endif %}>
+						</label>
+					</td>
+				{%- endfor -%}
+			</tr>
+			{%- endfor -%}
+		</tbody>
+	</table>
+
+{% endblock %}

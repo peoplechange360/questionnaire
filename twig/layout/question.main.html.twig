@@ -1,0 +1,17 @@
+<div class="panel-body">
+
+	<div class="panel panel-default">
+
+		{%- if question.title is defined or question.description is defined -%}
+			<div class="panel-heading">
+				{{- bootstrap.title(question.title, { 'subtitle': true, 'class': 'mainTitle' }) -}}
+				{{- bootstrap.title(question.description, { 'subtitle': true, 'class': 'subTitle text-muted' }) -}}
+			</div>
+		{%- endif %}
+
+		<div class="inner-question panel-body">
+			{% block content %}{% endblock %}
+		</div>
+	</div>
+
+</div>

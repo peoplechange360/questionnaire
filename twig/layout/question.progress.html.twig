@@ -1,0 +1,8 @@
+<aside id="progress">
+	<h1>Vraag {{ progress.current }} van {{ progress.total }}</h1>
+	<div class="progress" id="inner-progress">
+		<div class="progress-bar" id="progress-bar" role="progressbar" aria-valuenow="{{ progress.percentage }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ progress.percentage }}%;">
+			{{ progress.percentage }}%
+		</div>
+	</div>
+</aside>

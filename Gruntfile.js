@@ -13,18 +13,25 @@ module.exports = function(grunt) {
             }
         },
         coffee: {
+            options: {
+              bare: true
+            },
             compile: {
                 files: {
-                    'js/main.js': 'source/coffee/source.coffee', // 1:1 compile
-                    'js/main.min.js': ['source/coffee/*.coffee'] // compile and concat into single file
+                    'js/main.js': ['source/coffee/*.coffee']
                 }
             }
         },
         less: {
+            options: {
+                sourceMap: true,
+                sourceMapFilename: "main.css.map",
+                sourceMapBasepath: "source/less/"
+            },
             style: {
                 files: {
                     // target.css file: source.less file
-                    "css/main.css": "source/less/vragenlijst.less"
+                    "css/main.css": "source/less/questionnaire.less"
                 }
             }
         },
@@ -35,14 +42,18 @@ module.exports = function(grunt) {
             }
         },
         concat: {
-            options: {
-              stripBanners: true,
-              banner: '{# IMPORTANT!! DO NOT EDIT THIS GENERATED FILE. READ "twig/boostrap/README.md" #}\n\n',
-            },
             twig: {
+              options: {
+                stripBanners: true,
+                banner: '{# IMPORTANT!! DO NOT EDIT THIS GENERATED FILE. READ "twig/boostrap/README.md" #}\n\n',
+              },
               src: ['source/twig/*.twig'],
               dest: 'twig/bootstrap/bootstrap.functions.html.twig'
-            }
+          },
+          js: {
+              src: ['js/main.js', 'source/vendors/bootstrap/js/collapse.js'],
+              dest: 'js/main.js'
+          }
         },
         jshint: {
             all: []
@@ -54,7 +65,7 @@ module.exports = function(grunt) {
             },
             js: {
                 files: ['source/coffee/*.coffee'],
-                tasks: ['coffee:compile']
+                tasks: ['coffee:compile', 'concat:js']
             },
             css: {
                 files: ['source/less/*.less'],
@@ -76,5 +87,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     //grunt.registerTask('watch', ['watch']);
-    grunt.registerTask('default', ['concat:twig','coffee','less','cssmin']);
+    grunt.registerTask('default', ['concat:twig','coffee','less','cssmin','concat:js']);
 };

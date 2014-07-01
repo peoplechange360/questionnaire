@@ -8,12 +8,12 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-		<title>{{pagetitle}}</title>
+		<title>{{ pagetitle }}</title>
 
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/main.css">
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 	</head>
 	<body>
@@ -22,29 +22,30 @@
 			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 		<![endif]-->
 
+		{% include 'layout/template.header.html.twig' %}
 		<div class="container">
-			{% include 'layout/header.html.twig' %}
 
-			<article class="question">
+			{% include 'layout/question.progress.html.twig' %}
 
-				{% if introtext is defined %}
-					{% include 'layout/intro.text.html.twig' %}
-				{% endif %}
+			{{ form_start(form) }}
+				{% include 'layout/template.content.html.twig' %}
+			{{ form_end(form) }}
 
-				{{ bootstrap.title("Question", { 'icon': 'cog' }) }}
-				<div class="anwsers">
-
-				</div>
-
-			</article>
-
-
-			{% include 'layout/footer.html.twig' %}
 		</div>
+		{% include 'layout/template.footer.html.twig' %}
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
 		<script src="js/main.js"></script>
+		<script>
+			new Questionnaire({
+				checkboxes: $('#questionnaire input[type="radio"], #questionnaire input[type="checkbox"]'),
+				scaleTable: $('#questionnaire table[data-type="scale"]'),
+				other: $('#questionnaire .other'),
+				selectRequired: "--- Selecteer een optie ---",
+				uncheckRadio: true
+			});
+		</script>
 
 	</body>
 </html>

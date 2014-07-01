@@ -1,0 +1,27 @@
+<article class="question panel panel-default" id="questionnaire">
+
+	<div class="panel-heading">
+		<div class="panel-title">
+			{{ bootstrap.title(category.title, { 'icon': 'question-circle', 'subtitle': true  }) }}
+			{{ bootstrap.title(category.description, { 'subtitle': true }) }}
+		</div>
+	</div>
+	<div class="anwsers">
+
+		{% if introtext is defined %}
+			{% include 'layout/question.intro.text.html.twig' %}
+		{% endif %}
+
+		{% for question in questions %}
+			{% include 'types/question.' ~ question.type ~ '.html.twig' with question %}
+		{% endfor %}
+
+	</div>
+
+	<div class="panel-footer">
+		{{ bootstrap.button("Vorige", "#", { 'class': 'btn-default pull-left', 'icon': 'chevron-left' }) }}
+		{{ bootstrap.button("Volgende", "#", { 'class': 'btn-primary pull-right', 'icon': 'chevron-right', 'icon-align': 'right' }) }}
+		{% include 'layout/question.pagination.html.twig' %}
+	</div>
+
+</article>

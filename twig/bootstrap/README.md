@@ -8,5 +8,5 @@ This file is generated with [Grunt](http://gruntjs.com) and [grunt-concat](https
 2. Install [Grunt](http://gruntjs.com) by running `npm install -g grunt-cli`
 3. Run `npm install` from the root of this project
 4. Edit the files within [source/twig/](https://github.com/Qaraqter/questionnaire/tree/master/source/twig/)
-5. Run `grunt` or `grunt concat:watch` from the root of this project
+5. Run `grunt` or `grunt concat:twig` from the root of this project
   * _`grunt concat:watch` will automaticly generate the file after saving and needs to be active before you edit the files._
