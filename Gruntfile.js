@@ -25,8 +25,10 @@ module.exports = function(grunt) {
         less: {
             options: {
                 sourceMap: true,
+                sourceMapURL: './main.css.map',
+                sourceMapRootpath: '../',
                 sourceMapFilename: "css/main.css.map",
-                sourceMapBasepath: "source/less/"
+                sourceMapBasepath: "less/"
             },
             style: {
                 files: {
@@ -43,17 +45,17 @@ module.exports = function(grunt) {
         },
         concat: {
             twig: {
-              options: {
-                stripBanners: true,
-                banner: '{# IMPORTANT!! DO NOT EDIT THIS GENERATED FILE. READ "twig/boostrap/README.md" #}\n\n',
-              },
-              src: ['source/twig/*.twig'],
-              dest: 'twig/bootstrap/bootstrap.functions.html.twig'
-          },
-          js: {
-              src: ['js/main.js', 'source/vendors/bootstrap/js/collapse.js'],
-              dest: 'js/main.js'
-          }
+                options: {
+                    stripBanners: true,
+                    banner: '{# IMPORTANT!! DO NOT EDIT THIS GENERATED FILE. READ "twig/boostrap/README.md" #}\n\n',
+                },
+                src: ['source/twig/*.twig'],
+                dest: 'twig/bootstrap/bootstrap.functions.html.twig'
+            },
+            js: {
+                src: ['js/main.js', 'source/vendors/bootstrap/js/collapse.js'],
+                dest: 'js/main.js'
+            }
         },
         jshint: {
             all: []

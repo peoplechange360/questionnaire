@@ -26,9 +26,9 @@ class Project_Twig_Extension extends Twig_Extension
         );
     }
 
-    public function form_starts()
+    public function form_starts($form, $options)
     {
-        return '<form action="#">';
+        return '<form action="" id="'.$options['attr']['id'].'">';
     }
 
     public function form_ends()

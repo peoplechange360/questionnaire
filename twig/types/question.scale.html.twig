@@ -18,7 +18,11 @@
 				{%- for anwser in header.anwsers -%}
 					<td>
 						<label>
-							<input type="radio" data-label="{{ anwser.form.label }}" name="{{ anwser.form.name }}"{% if anwser.form.checked %} checked="checked"{% endif %}{% if anwser.form.value %} value="{{ anwser.form.value }}"{% endif %}>
+							<input
+								type="radio" data-label="{{ anwser.form.label }}" name="{{ anwser.form.name }}"
+								{%- if anwser.form.checked %} checked="checked"{% endif -%}
+								{%- if anwser.form.value %} value="{{ anwser.form.value }}"{% endif -%}
+								{%- if anwser.form.required == true %} required="required"{% endif -%}>
 						</label>
 					</td>
 				{%- endfor -%}

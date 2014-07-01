@@ -56,7 +56,7 @@ $typeArr = array(
 					"anwsers" => array(
 						array(
 							"form" => array(
-								"label" => "Mee eens",
+								"label" => "Mee eens 2",
 								"value" => "1",
 								"name" => "waarom2"
 							)

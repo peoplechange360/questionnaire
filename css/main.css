@@ -4337,6 +4337,12 @@ header {
   border-top: 1px solid #dddddd;
 }
 .question .list-group .list-group-item:first-child {
+  border-radius: 0;
+}
+.question .list-group .list-group-item.checked {
+  background: #e9f2f9 !important;
+}
+.question .list-group .list-group-item:first-child {
   border-top: 0 none;
 }
 .question .list-group .list-group-item .radio,
@@ -4361,6 +4367,15 @@ header {
 .question .list-group .list-group-item .input textarea,
 .question .list-group .list-group-item .textarea textarea {
   resize: vertical;
+}
+.question .list-group .list-group-item .options {
+  overflow: hidden;
+  padding: 15px 0;
+}
+@media (min-width: 768px) {
+  .question .list-group .list-group-item .options label {
+    margin: 7px 0;
+  }
 }
 .question .other {
   padding: 0 15px 15px;
@@ -4387,7 +4402,9 @@ header {
   float: left;
 }
 .question label:hover .outer-checkbox,
-.question label:hover .outer-radio {
+.question .checked label .outer-checkbox,
+.question label:hover .outer-radio,
+.question .checked label .outer-radio {
   border-color: #B8B8B8;
 }
 .question .outer-checkbox,
@@ -4511,4 +4528,4 @@ header {
   margin-right: 0;
   margin-left: 5px;
 }
-/*# sourceMappingURL=css/main.css.map */
+/*# sourceMappingURL=./main.css.map */

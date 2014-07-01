@@ -19,10 +19,11 @@ Checkbox = (function() {
         "class": "inner-" + elm.attr("type")
       });
       if (elm.is(':checked') === true) {
-        inner.addClass("checked");
+        outer.addClass("checked");
+        elm.closest(".list-group-item").addClass("checked");
+        this.checkedElms[$(elm).attr("name")] = $(elm);
       }
-      outer.insertBefore(elm);
-      outer.append(inner);
+      outer.insertBefore(elm).append(inner);
       elm.click(this.checkboxChanged.bind({
         uncheckRadio: this.uncheckRadio,
         outer: outer,
@@ -30,6 +31,10 @@ Checkbox = (function() {
         scope: this
       })).addClass("hide");
     }).bind(this));
+    this.checkboxChanged.call({
+      uncheckRadio: this.uncheckRadio,
+      scope: this
+    }, false);
   }
 
   Checkbox.prototype.resetCheckboxes = function() {
@@ -45,6 +50,7 @@ Checkbox = (function() {
       if (this.uncheckRadio === true) {
         if (inputName in scope.checkedElms) {
           if (scope.checkedElms[inputName].is(elm) === true) {
+            elm.closest(".list-group-item").removeClass("checked");
             elm.prop('checked', false).prev().removeClass("checked");
             delete scope.checkedElms[inputName];
             elm.trigger("change");
@@ -53,14 +59,18 @@ Checkbox = (function() {
         }
       }
     }
-    $($('input[name="' + inputName + '"]')).each(function(index, element) {
-      if ($(element).is(':checked') === true) {
-        return $(element).prev().addClass("checked");
+    $('input[name="' + inputName + '"]').each(function(index, element) {
+      var elm2;
+      elm2 = $(element);
+      if (elm2.is(':checked') === true) {
+        elm2.prev().addClass("checked");
+        elm2.closest(".list-group-item").addClass("checked");
       } else {
-        return $(element).prev().removeClass("checked");
+        elm2.prev().removeClass("checked");
+        elm2.closest(".list-group-item").removeClass("checked");
       }
+      scope.checkedElms[inputName] = $(elm);
     });
-    scope.checkedElms[inputName] = $(elm);
   };
 
   return Checkbox;
@@ -75,6 +85,7 @@ Questionnaire = (function() {
     options.check = new Checkbox(options);
     options.scale = new ScaleTable(options);
     options.other = new Other(options);
+    options.validation = new Validation(options);
   }
 
   return Questionnaire;
@@ -195,6 +206,59 @@ ScaleTable = (function() {
   };
 
   return ScaleTable;
+
+})();
+
+var Validation;
+
+Validation = (function() {
+  Validation.prototype.form = $("#questionnaireForm");
+
+  Validation.prototype.bootstrap = {
+    input: '.form-group',
+    inputGroup: '.input-group',
+    errorClass: 'has-error',
+    errorElement: 'span',
+    errorElementClass: 'help-block'
+  };
+
+  function Validation(options) {
+    var bootstrap;
+    this.options = options || {};
+    this.form = options.form || this.form || false;
+    bootstrap = this.bootstrap;
+    this.form.validate({
+      ignore: "",
+      highlight: function(element) {
+        $(element).closest(bootstrap.input).addClass(bootstrap.errorClass);
+        console.log(element);
+      },
+      unhighlight: function(element) {
+        $(element).closest(bootstrap.input).removeClass(bootstrap.errorClass);
+      },
+      submitHandler: function(form) {
+        form.submit();
+      },
+      debug: true,
+      errorElement: bootstrap.errorElement,
+      errorClass: bootstrap.errorElementClass,
+      errorPlacement: function(error, element) {
+        if (element.attr("type") === "checkbox" || element.attr("type") === "radio") {
+          element.closest(bootstrap.input).append(error);
+          return error.attr("class", error.attr("class") + " " + element.parent().attr("class") + " checkboxes-check");
+        } else {
+          if ((element.parent(bootstrap.inputGroup).length)) {
+            return error.insertAfter(element.parent());
+          } else {
+            return error.insertAfter(element);
+          }
+        }
+      }
+    });
+    return;
+  }
+
+  return Validation;
 
 })();
 
