@@ -25,7 +25,7 @@ module.exports = function(grunt) {
         less: {
             options: {
                 sourceMap: true,
-                sourceMapFilename: "main.css.map",
+                sourceMapFilename: "css/main.css.map",
                 sourceMapBasepath: "source/less/"
             },
             style: {
