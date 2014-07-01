@@ -22,14 +22,16 @@ $typeArr = array(
 					"form" => array(
 						"label" => "Omdat ze zo groeien",
 						"value" => "1",
-						"name" => "waarom"
+						"name" => "waarom",
+						"required" => true
 					)
 				),
 				array(
 					"form" => array(
 						"label" => "Omdat ze zo genetisch zijn gemanupiluurd",
 						"value" => "2",
-						"name" => "waarom"
+						"name" => "waarom",
+						"required" => true
 					),
 					"other" => array(
 						"form" => array(
@@ -42,7 +44,9 @@ $typeArr = array(
 					"form" => array(
 						"label" => "Waarom testen",
 						"value" => "3",
-						"name" => "waarom"
+						"name" => "waarom",
+						"required" => true,
+						"checked" => true
 					),
 					"other" => array(
 						"form" => array(

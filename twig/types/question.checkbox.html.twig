@@ -8,7 +8,11 @@
 			<li class="list-group-item">
 				<div class="{{ type }}">
 					<label>
-						<input type="{{ type }}" data-label="{{ anwser.form.label }}" name="{{ anwser.form.name }}"{% if anwser.form.checked %} checked="checked"{% endif %}{% if anwser.form.value %} value="{{ anwser.form.value }}"{% endif %}> {{ anwser.form.label }}
+						<input type="{{ type }}" data-label="{{ anwser.form.label }}" name="{{ anwser.form.name }}"
+							{%- if anwser.form.checked %} checked="checked"{% endif -%}
+							{%- if anwser.form.value %} value="{{ anwser.form.value }}"{% endif %}
+							{%- if anwser.form.required == true %} class="required"{% endif %}
+							{%- if anwser.form.checked == true %} checked="checked"{% endif %}> {{ anwser.form.label }}
 					</label>
 				</div>
 				{%- if anwser.other -%}

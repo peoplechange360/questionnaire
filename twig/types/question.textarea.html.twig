@@ -10,7 +10,10 @@
 			<li class="list-group-item">
 				<div class="{{ type }}">
 					<label for="id_{{ anwser.form.name }}">{{ anwser.form.label }}</label>
-					<textarea class="form-control" rows="3" name="{{ anwser.form.name }}" id="id_{{ anwser.form.name }}" data-label="{{ anwser.form.label }}">{% if anwser.form.value %}{{ anwser.form.value }}{% endif %}</textarea>
+					<textarea class="form-control" rows="3" name="{{ anwser.form.name }}" id="id_{{ anwser.form.name }}" data-label="{{ anwser.form.label }}"
+						{%- if anwser.form.required == true %} required="required"{% endif %}>
+						{%- if anwser.form.value %}{{ anwser.form.value }}{% endif -%}
+					</textarea>
 				</div>
 			</li>
 		{%- endfor -%}

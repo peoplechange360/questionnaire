@@ -18,12 +18,12 @@
     {%- set attr = options.attr|default({}) -%}
     <a href="{{ path|default("#") }}"
         id="{{ options.id|default("") }}"
-        {%- if options['text'] == true -%}
-        class="{{ options.button|default("") }}"
-        {%- else -%}
-        class="btn {{ options.button|default("btn-default") }}{%- if options['navbutton'] == true -%} navbar-btn{%- endif -%}"
-        {%- endif -%}
-        {%- for attrname,attrvalue in attr -%}{{attrname}}="{{attrvalue}}"{%- endfor -%}>
+        {% if options['text'] == true -%}
+        class="{{ options.class|default("") }}"
+        {% else -%}
+        class="btn {{ options.class|default("btn-default") }}{%- if options['navbutton'] == true -%} navbar-btn{%- endif -%}"
+        {% endif -%}
+        {%- for attrname,attrvalue in attr -%}{{ attrname }}="{{attrvalue}}" {% endfor -%}>
 
         {%- if options.icon is defined and options.icon != "" -%}
             {%- if options['icon-align'] != 'right' -%}<i class="fa fa-{{ options.icon }}"></i>{%- endif -%}

@@ -25,6 +25,8 @@ if($type == "radio" || $type == "checkbox") {
     require_once 'source/php/input.php';
 }else if($type == "textarea") {
     require_once 'source/php/textarea.php';
+}else if($type == "options") {
+    require_once 'source/php/options.php';
 }
 
 $menu = array(

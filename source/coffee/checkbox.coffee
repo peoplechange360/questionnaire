@@ -15,10 +15,18 @@ class Checkbox
 				class: "inner-" + elm.attr "type"
 
 			if elm.is(':checked') is true
-				inner.addClass "checked"
+				outer
+					.addClass "checked"
 
-			outer.insertBefore(elm)
-			outer.append(inner)
+				elm
+					.closest(".list-group-item")
+					.addClass "checked"
+
+				@checkedElms[$(elm).attr("name")] = $ elm
+
+			outer
+				.insertBefore(elm)
+				.append(inner)
 
 			elm
 				.click @checkboxChanged.bind({ uncheckRadio: @uncheckRadio, outer: outer, input: elm, scope: @ })
@@ -26,6 +34,8 @@ class Checkbox
 
 			return
 		).bind(@)
+
+		@checkboxChanged.call({ uncheckRadio: @uncheckRadio, scope: @ }, false)
 
 	resetCheckboxes: () ->
 		@checkedElms = {}
@@ -39,6 +49,9 @@ class Checkbox
 			if @uncheckRadio is true
 				if inputName of scope.checkedElms
 					if scope.checkedElms[inputName].is(elm) is true
+						elm
+							.closest(".list-group-item")
+							.removeClass "checked"
 
 						elm
 							.prop 'checked', false
@@ -49,17 +62,28 @@ class Checkbox
 						elm.trigger "change"
 						return
 
-		$($('input[name="' + inputName + '"]')).each (index, element) ->
-			if $(element).is(':checked') is true
-				$(element)
+		$('input[name="' + inputName + '"]').each (index, element) ->
+			elm2 = $ element
+
+			if elm2.is(':checked') is true
+
+				elm2
 					.prev()
 					.addClass "checked"
 
+				elm2
+					.closest(".list-group-item")
+					.addClass "checked"
+
 			else
-				$(element)
+				elm2
 					.prev()
 					.removeClass "checked"
 
-		scope.checkedElms[inputName] = $ elm
+				elm2
+					.closest(".list-group-item")
+					.removeClass "checked"
 
+			scope.checkedElms[inputName] = $ elm
+			return
 		return

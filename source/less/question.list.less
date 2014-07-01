@@ -34,6 +34,14 @@
 			border-top: 1px solid @table-border-color;
 
 			&:first-child {
+				border-radius:0;
+			}
+
+			&.checked {
+				background: lighten(@brand-primary, 42%) !important;
+			}
+
+			&:first-child {
 				border-top: 0 none;
 			}
 
@@ -58,6 +66,16 @@
 
 				textarea {
 					resize: vertical;
+				}
+			}
+			.options {
+				overflow:hidden;
+				padding: 15px 0;
+
+				label {
+					@media(min-width: @screen-sm-min) {
+						margin: 7px 0;
+					}
 				}
 			}
 		}
@@ -91,7 +109,8 @@
 		float: left;
 	}
 
-	label:hover {
+	label:hover,
+	.checked label {
 		.outer-checkbox,
 		.outer-radio {
 			border-color: #B8B8B8;
