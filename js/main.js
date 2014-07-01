@@ -239,7 +239,6 @@ Validation = (function() {
       submitHandler: function(form) {
         form.submit();
       },
-      debug: true,
       errorElement: bootstrap.errorElement,
       errorClass: bootstrap.errorElementClass,
       errorPlacement: function(error, element) {

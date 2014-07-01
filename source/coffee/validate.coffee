@@ -28,7 +28,6 @@ class Validation
 				form.submit();
 				return
 
-			debug: true
 			errorElement: bootstrap.errorElement
 			errorClass: bootstrap.errorElementClass
 			errorPlacement: (error, element) ->
