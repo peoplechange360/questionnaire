@@ -15,7 +15,7 @@
 							{%- if answer.form.checked == true %} checked="checked"{% endif %}> {{ answer.form.label }}
 					</label>
 				</div>
-				{%- if answer.other -%}
+				{%- if answer.other is defined and answer.other -%}
 					<div class="other form-group hide">
 						<label for="id_{{ answer.other.form.name }}">{{ answer.other.form.label }}</label>
 						<input type="text" class="form-control" required="required" name="{{ answer.other.form.name }}" id="id_{{ answer.other.form.name }}">
