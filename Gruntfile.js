@@ -8,7 +8,7 @@ module.exports = function(grunt) {
             js: {
                 files: {
                     // target.js file: source.js file
-                    'js/main.min.js': ['js/main.js']
+                    'web/js/main.min.js': ['web/js/main.js']
                 }
             }
         },
@@ -18,7 +18,7 @@ module.exports = function(grunt) {
             },
             compile: {
                 files: {
-                    'js/main.js': ['source/coffee/*.coffee']
+                    'web/js/main.js': ['source/coffee/*.coffee']
                 }
             }
         },
@@ -26,21 +26,21 @@ module.exports = function(grunt) {
             options: {
                 sourceMap: true,
                 sourceMapURL: './main.css.map',
-                sourceMapRootpath: '../',
-                sourceMapFilename: "css/main.css.map",
+                sourceMapRootpath: '../../',
+                sourceMapFilename: "web/css/main.css.map",
                 sourceMapBasepath: "less/"
             },
             style: {
                 files: {
                     // target.css file: source.less file
-                    "css/main.css": "source/less/questionnaire.less"
+                    "web/css/main.css": "source/less/questionnaire.less"
                 }
             }
         },
         cssmin: {
             minify: {
-                src: 'css/main.css',
-                dest: 'css/main.min.css'
+                src: 'web/css/main.css',
+                dest: 'web/css/main.min.css'
             }
         },
         concat: {
@@ -49,12 +49,12 @@ module.exports = function(grunt) {
                     stripBanners: true,
                     banner: '{# IMPORTANT!! DO NOT EDIT THIS GENERATED FILE. READ "twig/boostrap/README.md" #}\n\n',
                 },
-                src: ['source/twig/*.twig'],
-                dest: 'twig/bootstrap/bootstrap.functions.html.twig'
+                src: ['source/twig/macros/*.twig'],
+                dest: 'source/twig/bootstrap/bootstrap.functions.html.twig'
             },
             js: {
-                src: ['js/main.js', 'source/vendors/bootstrap/js/collapse.js'],
-                dest: 'js/main.js'
+                src: ['web/js/main.js', 'source/vendors/bootstrap/js/collapse.js'],
+                dest: 'web/js/main.js'
             }
         },
         jshint: {
