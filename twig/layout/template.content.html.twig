@@ -4,34 +4,32 @@
 
 {% block content %}
 	{% include 'layout/question.progress.html.twig' %}
-	{% block form %}
-		{{ form_start(form, { 'attr': { 'id': 'questionnaireForm' }} ) }}
-			<article class="question panel panel-default" id="questionnaire">
+	{{ form_start(form, { 'attr': { 'id': 'questionnaireForm' }} ) }}
+		<article class="question panel panel-default" id="questionnaire">
 
-				<div class="panel-heading">
-					<div class="panel-title">
-						{{ bootstrap.title(category.title, { 'icon': 'question-circle', 'subtitle': true  }) }}
-						{{ bootstrap.title(category.description, { 'subtitle': true }) }}
-					</div>
+			<div class="panel-heading">
+				<div class="panel-title">
+					{{ bootstrap.title(category.title, { 'icon': 'question-circle', 'subtitle': true  }) }}
+					{{ bootstrap.title(category.description, { 'subtitle': true }) }}
 				</div>
+			</div>
 
-				<div class="answers">
-					{% if introtext is defined %}
-						{% include 'layout/question.intro.text.html.twig' %}
-					{% endif %}
+			<div class="answers">
+				{% if introtext is defined %}
+					{% include 'layout/question.intro.text.html.twig' %}
+				{% endif %}
 
-					{% for question in questions %}
-						{% include 'types/question.' ~ question.type ~ '.html.twig' with question %}
-					{% endfor %}
-				</div>
+				{% for question in questions %}
+					{% include 'types/question.' ~ question.type ~ '.html.twig' with question %}
+				{% endfor %}
+			</div>
 
-				<div class="panel-footer">
-					{{ bootstrap.link("Vorige", "#", { 'class': 'btn-default pull-left', 'icon': 'chevron-left' }) }}
-					{{ bootstrap.button("Volgende", "submit", { 'class': 'btn-primary pull-right', 'icon': 'chevron-right', 'icon-align': 'right' }) }}
-					{% include 'layout/question.pagination.html.twig' %}
-				</div>
+			<div class="panel-footer">
+				{{ bootstrap.link("Vorige", "#", { 'class': 'btn-default pull-left', 'icon': 'chevron-left' }) }}
+				{{ bootstrap.button("Volgende", "submit", { 'class': 'btn-primary pull-right', 'icon': 'chevron-right', 'icon-align': 'right' }) }}
+				{% include 'layout/question.pagination.html.twig' %}
+			</div>
 
-			</article>
-		{{ form_end(form) }}
-	{% endblock %}
+		</article>
+	{{ form_end(form) }}
 {% endblock %}
