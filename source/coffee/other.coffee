@@ -14,7 +14,6 @@ class Other
 
 			input
 				.change @otherChanged.bind({ input: input, container: elm })
-				# .on "inputChanged", @otherChanged.bind({ input: input, container: elm })
 
 			$($('input[name="' + inputName + '"]')).each ((ind, elm2) ->
 				elm2 = $ elm2

@@ -10,7 +10,7 @@ Checkbox = (function() {
     this.checkboxes = options.checkboxes, this.uncheckRadio = options.uncheckRadio;
     this.uncheckRadio = this.uncheckRadio || false;
     $(this.checkboxes).each((function(index, element) {
-      var elm, inner, outer;
+      var elm, inner, other, outer;
       elm = $(element);
       outer = $("<div>", {
         "class": "outer-" + elm.attr("type")
@@ -21,6 +21,10 @@ Checkbox = (function() {
       if (elm.is(':checked') === true) {
         outer.addClass("checked");
         elm.closest(".list-group-item").addClass("checked");
+        other = elm.closest(".list-group-item").children(".other");
+        if (other.length > 0) {
+          other.removeClass("hide");
+        }
         this.checkedElms[$(elm).attr("name")] = $(elm);
       }
       outer.insertBefore(elm).append(inner);
@@ -29,7 +33,7 @@ Checkbox = (function() {
         outer: outer,
         input: elm,
         scope: this
-      })).addClass("hide");
+      })).addClass("hide").addClass("doValidate");
     }).bind(this));
     this.checkboxChanged.call({
       uncheckRadio: this.uncheckRadio,
@@ -217,6 +221,7 @@ Validation = (function() {
   Validation.prototype.bootstrap = {
     input: '.form-group',
     inputGroup: '.input-group',
+    radioGroup: '.list-group',
     errorClass: 'has-error',
     errorElement: 'span',
     errorElementClass: 'help-block'
@@ -228,7 +233,7 @@ Validation = (function() {
     this.form = options.form || this.form || false;
     bootstrap = this.bootstrap;
     this.form.validate({
-      ignore: "",
+      ignore: ":hidden:not(.doValidate)",
       highlight: function(element) {
         $(element).closest(bootstrap.input).addClass(bootstrap.errorClass);
         console.log(element);
@@ -242,8 +247,9 @@ Validation = (function() {
       errorElement: bootstrap.errorElement,
       errorClass: bootstrap.errorElementClass,
       errorPlacement: function(error, element) {
+        console.log(error);
         if (element.attr("type") === "checkbox" || element.attr("type") === "radio") {
-          element.closest(bootstrap.input).append(error);
+          element.closest(bootstrap.radioGroup).append(error);
           return error.attr("class", error.attr("class") + " " + element.parent().attr("class") + " checkboxes-check");
         } else {
           if ((element.parent(bootstrap.inputGroup).length)) {
