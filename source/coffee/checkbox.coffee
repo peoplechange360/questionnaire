@@ -19,8 +19,16 @@ class Checkbox
 					.addClass "checked"
 
 				elm
-					.closest(".list-group-item")
+					.closest ".list-group-item"
 					.addClass "checked"
+
+				other = elm
+					.closest ".list-group-item"
+					.children ".other"
+
+				if other.length > 0
+					other
+						.removeClass "hide"
 
 				@checkedElms[$(elm).attr("name")] = $ elm
 
@@ -31,6 +39,7 @@ class Checkbox
 			elm
 				.click @checkboxChanged.bind({ uncheckRadio: @uncheckRadio, outer: outer, input: elm, scope: @ })
 				.addClass "hide"
+				.addClass "doValidate"
 
 			return
 		).bind(@)
