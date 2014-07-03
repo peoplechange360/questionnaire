@@ -44,4 +44,4 @@ $menu = array(
 );
 $result = array_merge($typeArr, $menu);
 
-echo $twig->render('layout/template.html.twig', $result);
+echo $twig->render('layout/template.content.html.twig', $result);
