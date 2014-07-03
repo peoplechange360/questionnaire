@@ -4381,13 +4381,13 @@ header {
   padding: 0 15px 15px;
   margin: 0;
 }
-.question .anwsers {
+.question .answers {
   padding: 15px 0 0;
 }
-.question .anwsers > .panel-body {
+.question .answers > .panel-body {
   padding: 0 15px 15px;
 }
-.question .anwsers > .panel-body > .panel {
+.question .answers > .panel-body > .panel {
   margin-bottom: 0;
 }
 .question .mainTitle {

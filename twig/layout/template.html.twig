@@ -26,13 +26,7 @@
 
 		{% include 'layout/template.header.html.twig' %}
 		<div class="container">
-
-			{% include 'layout/question.progress.html.twig' %}
-
-			{{ form_start(form, { 'attr': { 'id': 'questionnaireForm' }} ) }}
-				{% include 'layout/template.content.html.twig' %}
-			{{ form_end(form) }}
-
+	        {% block content %}{% endblock %}
 		</div>
 		{% include 'layout/template.footer.html.twig' %}
 

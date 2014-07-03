@@ -4,21 +4,21 @@
 	{%- set type = type|default("checkbox") -%}
 
 	<ul class="list-group list-group-striped">
-		{%- for anwser in question.anwsers -%}
+		{%- for answer in question.answers -%}
 			<li class="list-group-item">
 				<div class="{{ type }}">
 					<label>
-						<input type="{{ type }}" data-label="{{ anwser.form.label }}" name="{{ anwser.form.name }}"
-							{%- if anwser.form.checked %} checked="checked"{% endif -%}
-							{%- if anwser.form.value %} value="{{ anwser.form.value }}"{% endif %}
-							{%- if anwser.form.required == true %} class="required"{% endif %}
-							{%- if anwser.form.checked == true %} checked="checked"{% endif %}> {{ anwser.form.label }}
+						<input type="{{ type }}" data-label="{{ answer.form.label }}" name="{{ answer.form.name }}"
+							{%- if answer.form.checked %} checked="checked"{% endif -%}
+							{%- if answer.form.value %} value="{{ answer.form.value }}"{% endif %}
+							{%- if answer.form.required == true %} class="required"{% endif %}
+							{%- if answer.form.checked == true %} checked="checked"{% endif %}> {{ answer.form.label }}
 					</label>
 				</div>
-				{%- if anwser.other -%}
+				{%- if answer.other -%}
 					<div class="other form-group hide">
-						<label for="id_{{ anwser.other.form.name }}">{{ anwser.other.form.label }}</label>
-						<input type="text" class="form-control" required="required" name="{{ anwser.other.form.name }}" id="id_{{ anwser.other.form.name }}">
+						<label for="id_{{ answer.other.form.name }}">{{ answer.other.form.label }}</label>
+						<input type="text" class="form-control" required="required" name="{{ answer.other.form.name }}" id="id_{{ answer.other.form.name }}">
 					</div>
 				{%- endif -%}
 			</li>

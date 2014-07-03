@@ -1,3 +1,6 @@
 {
-	"name" : "qaraqter/questionnaire"
+	"name" : "qaraqter/questionnaire",
+	"require" : {
+		"twig/twig" : "dev-master"
+	}
 }

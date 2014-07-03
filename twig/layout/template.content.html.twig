@@ -1,27 +1,35 @@
-<article class="question panel panel-default" id="questionnaire">
+{% extends 'layout/template.html.twig' %}
 
-	<div class="panel-heading">
-		<div class="panel-title">
-			{{ bootstrap.title(category.title, { 'icon': 'question-circle', 'subtitle': true  }) }}
-			{{ bootstrap.title(category.description, { 'subtitle': true }) }}
-		</div>
-	</div>
-	<div class="anwsers">
+{% block content %}
+	{% include 'layout/question.progress.html.twig' %}
+	{% block form %}
+		{{ form_start(form, { 'attr': { 'id': 'questionnaireForm' }} ) }}
+			<article class="question panel panel-default" id="questionnaire">
 
-		{% if introtext is defined %}
-			{% include 'layout/question.intro.text.html.twig' %}
-		{% endif %}
+				<div class="panel-heading">
+					<div class="panel-title">
+						{{ bootstrap.title(category.title, { 'icon': 'question-circle', 'subtitle': true  }) }}
+						{{ bootstrap.title(category.description, { 'subtitle': true }) }}
+					</div>
+				</div>
 
-		{% for question in questions %}
-			{% include 'types/question.' ~ question.type ~ '.html.twig' with question %}
-		{% endfor %}
+				<div class="answers">
+					{% if introtext is defined %}
+						{% include 'layout/question.intro.text.html.twig' %}
+					{% endif %}
 
-	</div>
+					{% for question in questions %}
+						{% include 'types/question.' ~ question.type ~ '.html.twig' with question %}
+					{% endfor %}
+				</div>
 
-	<div class="panel-footer">
-		{{ bootstrap.link("Vorige", "#", { 'class': 'btn-default pull-left', 'icon': 'chevron-left' }) }}
-		{{ bootstrap.button("Volgende", "submit", { 'class': 'btn-primary pull-right', 'icon': 'chevron-right', 'icon-align': 'right' }) }}
-		{% include 'layout/question.pagination.html.twig' %}
-	</div>
+				<div class="panel-footer">
+					{{ bootstrap.link("Vorige", "#", { 'class': 'btn-default pull-left', 'icon': 'chevron-left' }) }}
+					{{ bootstrap.button("Volgende", "submit", { 'class': 'btn-primary pull-right', 'icon': 'chevron-right', 'icon-align': 'right' }) }}
+					{% include 'layout/question.pagination.html.twig' %}
+				</div>
 
-</article>
+			</article>
+		{{ form_end(form) }}
+	{% endblock %}
+{% endblock %}

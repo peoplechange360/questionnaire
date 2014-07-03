@@ -17,7 +17,7 @@ $typeArr = array(
 			"type" => $type,
 			"title" => "Waarom zijn de bananen krom?",
 			"description" => "Denk aan de prioriteiten van onze mensen.",
-			"anwsers" => array(
+			"answers" => array(
 				array(
 					"form" => array(
 						"label" => "Omdat ze zo groeien",
@@ -61,7 +61,7 @@ $typeArr = array(
 			"type" => "table",
 			"title" => "Zijn de bananen krom?",
 			"description" => "Denk aan de prioriteiten van onze mensen.",
-			"anwsers" => array(
+			"answers" => array(
 				array(
 					"header" => "Mee eens",
 					"label" => "Omdat ze zo groeien",
@@ -85,7 +85,7 @@ $typeArr = array(
 			"type" => "checkbox",
 			"title" => "Waarom zijn de bananen krom?",
 			"description" => "Denk aan de prioriteiten van onze mensen.",
-			"anwsers" => array(
+			"answers" => array(
 				array(
 					"title" => "Omdat ze zo groeien",
 					"value" => "1",
