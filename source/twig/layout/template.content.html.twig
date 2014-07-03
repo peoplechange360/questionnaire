@@ -3,7 +3,11 @@
 {% import 'bootstrap/bootstrap.functions.html.twig' as bootstrap %}
 
 {% block content %}
+    {% block progress %}
 	{% include 'layout/question.progress.html.twig' %}
+	{% endblock %}
+
+    {% block questions %}
 	{{ form_start(form, { 'attr': { 'id': 'questionnaireForm' }} ) }}
 		<article class="question panel panel-default" id="questionnaire">
 
@@ -32,4 +36,5 @@
 
 		</article>
 	{{ form_end(form) }}
+	{% endblock %}
 {% endblock %}
