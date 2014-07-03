@@ -8,6 +8,8 @@
 /source/vendors/
 /node_modules/
 
+/vendor
+
 # Eclispe files
 /.buildpath
 /.project
