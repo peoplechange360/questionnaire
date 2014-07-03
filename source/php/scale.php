@@ -17,10 +17,10 @@ $typeArr = array(
 			"type" => "scale",
 			"title" => "Waarom zijn de bananen krom?",
 			"description" => "Denk aan de prioriteiten van onze mensen.",
-			"anwsers" => array(
+			"answers" => array(
 				array(
 					"title" => "Waarom rollen we zo?",
-					"anwsers" => array(
+					"answers" => array(
 						array(
 							"form" => array(
 								"label" => "Mee eens",
@@ -53,7 +53,7 @@ $typeArr = array(
 				),
 				array(
 					"title" => "Waarom draaien we zo?",
-					"anwsers" => array(
+					"answers" => array(
 						array(
 							"form" => array(
 								"label" => "Mee eens 2",
@@ -86,7 +86,7 @@ $typeArr = array(
 				),
 				array(
 					"title" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt eros quis eros ultrices, dapibus malesuada nibh congue. Praesent a accumsan eros.",
-					"anwsers" => array(
+					"answers" => array(
 						array(
 							"form" => array(
 								"label" => "Mee eens",
@@ -119,7 +119,7 @@ $typeArr = array(
 				),
 				array(
 					"title" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt eros quis eros ultrices, dapibus malesuada nibh congue. Vivamus tincidunt eros quis eros ultrices, dapibus malesuada nibh congue. Praesent a accumsan eros.",
-					"anwsers" => array(
+					"answers" => array(
 						array(
 							"form" => array(
 								"label" => "Mee eens",

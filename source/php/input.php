@@ -17,7 +17,7 @@ $typeArr = array(
 			"type" => "input",
 			// "title" => "Waarom zijn de bananen krom?",
 			// "description" => "Denk aan de prioriteiten van onze mensen.",
-			"anwsers" => array(
+			"answers" => array(
 				array(
 					"form" => array(
 						"label" => "Waarom zijn de bananen krom?",

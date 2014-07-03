@@ -2,15 +2,15 @@
 
 {% block content %}
 	<ul class="list-group list-group-striped">
-		{%- for anwser in question.anwsers -%}
+		{%- for answer in question.answers -%}
 			<li class="list-group-item">
 				<div class="{{ type }}">
-					<label for="id_{{ anwser.form.name }}" class="col-sm-8">{{ anwser.form.label }}</label>
-					{# <input class="form-control" id="id_{{ anwser.form.name }}" type="{{ type }}" data-label="{{ anwser.form.label }}" name="{{ anwser.form.name }}"{% if anwser.form.value %} value="{{ anwser.form.value }}"{% endif %}> #}
+					<label for="id_{{ answer.form.name }}" class="col-sm-8">{{ answer.form.label }}</label>
+					{# <input class="form-control" id="id_{{ answer.form.name }}" type="{{ type }}" data-label="{{ answer.form.label }}" name="{{ answer.form.name }}"{% if answer.form.value %} value="{{ answer.form.value }}"{% endif %}> #}
 					<div class="col-sm-4">
-						<select class="form-control" name="{{ anwser.form.name }}" id="id_{{ anwser.form.name }}">
-							<option>{{ anwser.form.defaultOption }}</option>
-							{%- for option in anwser.form.options -%}
+						<select class="form-control" name="{{ answer.form.name }}" id="id_{{ answer.form.name }}">
+							<option>{{ answer.form.defaultOption }}</option>
+							{%- for option in answer.form.options -%}
 								<option value="{{ option.value }}">{{ option.title }}</option>
 							{%- endfor -%}
 						</select>

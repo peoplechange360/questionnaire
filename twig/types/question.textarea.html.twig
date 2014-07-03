@@ -6,13 +6,13 @@
 	{%- set type = type|default("input") -%}
 
 	<ul class="list-group list-group-striped">
-		{%- for anwser in question.anwsers -%}
+		{%- for answer in question.answers -%}
 			<li class="list-group-item">
 				<div class="{{ type }}">
-					<label for="id_{{ anwser.form.name }}">{{ anwser.form.label }}</label>
-					<textarea class="form-control" rows="3" name="{{ anwser.form.name }}" id="id_{{ anwser.form.name }}" data-label="{{ anwser.form.label }}"
-						{%- if anwser.form.required == true %} required="required"{% endif %}>
-						{%- if anwser.form.value %}{{ anwser.form.value }}{% endif -%}
+					<label for="id_{{ answer.form.name }}">{{ answer.form.label }}</label>
+					<textarea class="form-control" rows="3" name="{{ answer.form.name }}" id="id_{{ answer.form.name }}" data-label="{{ answer.form.label }}"
+						{%- if answer.form.required == true %} required="required"{% endif %}>
+						{%- if answer.form.value %}{{ answer.form.value }}{% endif -%}
 					</textarea>
 				</div>
 			</li>

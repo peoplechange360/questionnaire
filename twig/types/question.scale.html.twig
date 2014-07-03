@@ -1,28 +1,27 @@
 {% extends "layout/question.main.html.twig" %}
 
 {% block content %}
-
 	<table class="table" data-type="scale">
 		<thead>
 			<tr>
 				<th class="title">&nbsp;</th>
-				{%- for anwser in question.anwsers.0.anwsers -%}
-					<th data-value="{{ anwser.form.value }}">{{ anwser.form.label }}</th>
+				{%- for answer in question.answers.0.answers -%}
+					<th data-value="{{ answer.form.value }}">{{ answer.form.label }}</th>
 				{%- endfor -%}
 			</tr>
 		</thead>
 		<tbody>
-			{%- for header in question.anwsers -%}
+			{%- for header in question.answers -%}
 			<tr>
 				<td class="title">{{ header.title }}</td>
-				{%- for anwser in header.anwsers -%}
+				{%- for answer in header.answers -%}
 					<td>
 						<label>
 							<input
-								type="radio" data-label="{{ anwser.form.label }}" name="{{ anwser.form.name }}"
-								{%- if anwser.form.checked %} checked="checked"{% endif -%}
-								{%- if anwser.form.value %} value="{{ anwser.form.value }}"{% endif -%}
-								{%- if anwser.form.required == true %} required="required"{% endif -%}>
+								type="radio" data-label="{{ answer.form.label }}" name="{{ answer.form.name }}"
+								{%- if answer.form.checked %} checked="checked"{% endif -%}
+								{%- if answer.form.value %} value="{{ answer.form.value }}"{% endif -%}
+								{%- if answer.form.required == true %} required="required"{% endif -%}>
 						</label>
 					</td>
 				{%- endfor -%}
@@ -30,5 +29,4 @@
 			{%- endfor -%}
 		</tbody>
 	</table>
-
 {% endblock %}
