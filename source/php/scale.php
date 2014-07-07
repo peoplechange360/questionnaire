@@ -20,6 +20,7 @@ $typeArr = array(
 			"answers" => array(
 				array(
 					"title" => "Waarom rollen we zo?",
+					"required" => true,
 					"answers" => array(
 						array(
 							"form" => array(

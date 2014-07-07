@@ -1885,7 +1885,8 @@ select[multiple].input-lg {
 .has-error .radio,
 .has-error .checkbox,
 .has-error .radio-inline,
-.has-error .checkbox-inline {
+.has-error .checkbox-inline,
+.question .inner-question > .help-block {
   color: #a94442;
 }
 .has-error .form-control {
@@ -4328,6 +4329,24 @@ header {
 .question .well p {
   margin: 0;
 }
+.question .inner-question > .help-block {
+  border-bottom: 1px solid #ebccd1;
+  padding: 10px 15px 10px 15px;
+  margin: 0;
+  background: #f2dede;
+}
+.question .inner-question > .help-block.checkboxes-check:after {
+  content: "\f13a";
+  display: inline-block;
+  float: left;
+  margin-right: 10px;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  font-size: 23px;
+}
 .question .list-group.list-group-striped .list-group-item:nth-child(even) {
   background-color: #f9f9f9;
 }
@@ -4344,6 +4363,13 @@ header {
 }
 .question .list-group .list-group-item:first-child {
   border-top: 0 none;
+}
+.question .list-group .list-group-item.has-error,
+.question table tbody tr.has-error {
+  background: #f2dede !important;
+}
+.question .list-group .list-group-item .help-block {
+  margin-bottom: 0;
 }
 .question .list-group .list-group-item .radio,
 .question .list-group .list-group-item .checkbox {
@@ -4396,6 +4422,7 @@ header {
 }
 .question .subTitle {
   font-style: italic;
+  opacity: 0.7;
 }
 .question input[type="checkbox"],
 .question input[type="radio"] {
@@ -4466,6 +4493,9 @@ header {
 .question table thead th.title {
   text-align: left;
 }
+.question table tbody tr.has-error span.help-block {
+  margin: 5px 0 0;
+}
 .question table tbody tr td {
   margin: 0;
   padding: 0;
@@ -4520,6 +4550,21 @@ header {
     border-right: 0 none !important;
     border-radius: 0;
   }
+}
+.has-error .outer-radio {
+  border-color: #ebccd1;
+}
+.has-error .outer-radio:hover {
+  border-color: #a94442 !important;
+}
+.has-error label:hover .outer-radio {
+  border-color: #a94442 !important;
+}
+table[data-type="scale"] .select-row.has-error select {
+  border-color: #a94442 !important;
+}
+table[data-type="scale"] tr.even td {
+  background-color: #f9f9f9;
 }
 .fa {
   margin-right: 5px;

@@ -26,7 +26,8 @@ class ScaleTable
 
 				sel
 					.append($('<option>', {
-						text: @options.selectRequired
+						text: @options.selectRequired,
+						value: ""
 					}))
 					.change @selectChanged.bind({ select: sel, tr: $(trElm), options: @.options })
 

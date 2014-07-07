@@ -90,6 +90,7 @@ Questionnaire = (function() {
     options.scale = new ScaleTable(options);
     options.other = new Other(options);
     options.validation = new Validation(options);
+    options.table = new Table(options);
   }
 
   return Questionnaire;
@@ -158,7 +159,8 @@ ScaleTable = (function() {
         tr.append(td);
         td.append(sel);
         sel.append($('<option>', {
-          text: this.options.selectRequired
+          text: this.options.selectRequired,
+          value: ""
         })).change(this.selectChanged.bind({
           select: sel,
           tr: $(trElm),
@@ -213,6 +215,36 @@ ScaleTable = (function() {
 
 })();
 
+var Table;
+
+Table = (function() {
+  function Table(options) {
+    var num;
+    num = 0;
+    $('table[data-type="scale"] tbody tr.input-row').each((function(trIndex, trElm) {
+      var className, elm;
+      elm = $(trElm);
+      className = num === 0 ? "odd" : "even";
+      console.log(elm, num, elm.hasClass('input-row'), className);
+      if (elm.hasClass('input-row')) {
+        elm.addClass(className);
+        if (elm.next().hasClass('select-row')) {
+          elm.next().addClass(className);
+        }
+      }
+      if (num === 0) {
+        num = 1;
+      } else {
+        num = 0;
+      }
+    }).bind(this));
+    return;
+  }
+
+  return Table;
+
+})();
+
 var Validation;
 
 Validation = (function() {
@@ -220,11 +252,18 @@ Validation = (function() {
 
   Validation.prototype.bootstrap = {
     input: '.form-group',
+    inputContainer: '.input',
     inputGroup: '.input-group',
     radioGroup: '.list-group',
+    questionGroup: '.list-group-item',
+    panelGroup: '.panel',
+    panelGroupErrorClass: 'panel-danger',
     errorClass: 'has-error',
     errorElement: 'span',
-    errorElementClass: 'help-block'
+    errorElementClass: 'help-block',
+    radioErrorText: 'Selecteer één van de verplichten opties.',
+    checkboxErrorText: 'Selecteer minimaal één optie.',
+    scaleErrorText: 'Selecteer één van de verplichten opties.'
   };
 
   function Validation(options) {
@@ -232,36 +271,69 @@ Validation = (function() {
     this.options = options || {};
     this.form = options.form || this.form || false;
     bootstrap = this.bootstrap;
+    this.setCustomMessages();
     this.form.validate({
-      ignore: ":hidden:not(.doValidate)",
+      errorElement: bootstrap.errorElement,
+      errorClass: bootstrap.errorElementClass,
+      ignore: ":hidden:not(.doValidate), .noValidation",
       highlight: function(element) {
-        $(element).closest(bootstrap.input).addClass(bootstrap.errorClass);
-        console.log(element);
+        element = $(element);
+        element.closest(bootstrap.input).addClass(bootstrap.errorClass);
+        if (element.parents('table[data-type="scale"]').length > 0) {
+          element.closest("tr").addClass(bootstrap.errorClass).next().addClass(bootstrap.errorClass);
+        } else if (element.attr("type") === "checkbox" || element.attr("type") === "radio") {
+          element.closest(bootstrap.radioGroup).addClass(bootstrap.errorClass);
+        } else {
+          element.closest(bootstrap.inputContainer).addClass(bootstrap.errorClass);
+        }
       },
       unhighlight: function(element) {
-        $(element).closest(bootstrap.input).removeClass(bootstrap.errorClass);
+        element = $(element);
+        element.closest(bootstrap.input).removeClass(bootstrap.errorClass);
+        if (element.parents('table[data-type="scale"]').length > 0) {
+          element.closest("tr").removeClass(bootstrap.errorClass).next().removeClass(bootstrap.errorClass);
+        } else if (element.attr("type") === "checkbox" || element.attr("type") === "radio") {
+          element.closest(bootstrap.radioGroup).removeClass(bootstrap.errorClass);
+        } else {
+          element.closest(bootstrap.inputContainer).removeClass(bootstrap.errorClass);
+        }
       },
       submitHandler: function(form) {
         form.submit();
       },
-      errorElement: bootstrap.errorElement,
-      errorClass: bootstrap.errorElementClass,
       errorPlacement: function(error, element) {
-        console.log(error);
-        if (element.attr("type") === "checkbox" || element.attr("type") === "radio") {
-          element.closest(bootstrap.radioGroup).append(error);
-          return error.attr("class", error.attr("class") + " " + element.parent().attr("class") + " checkboxes-check");
+        if (element.data('questionnaire-type') === "scale") {
+          element.closest("tr").children('.title').append(error);
+        } else if (element.attr("type") === "checkbox" || element.attr("type") === "radio") {
+          element.closest(bootstrap.radioGroup).parent().prepend(error);
+          error.attr("class", error.attr("class") + " checkboxes-check");
         } else {
           if ((element.parent(bootstrap.inputGroup).length)) {
-            return error.insertAfter(element.parent());
+            error.insertAfter(element.parent());
           } else {
-            return error.insertAfter(element);
+            error.insertAfter(element);
           }
         }
       }
     });
     return;
   }
+
+  Validation.prototype.setCustomMessages = function() {
+    var bootstrap;
+    bootstrap = this.bootstrap;
+    $('input[type="radio"]').each((function(index, element) {
+      $(element).data('msg-required', bootstrap.radioErrorText);
+    }).bind(this));
+    $('input[type="checkbox"]').each((function(index, element) {
+      $(element).data('msg-required', bootstrap.checkboxErrorText);
+    }).bind(this));
+    $('table[data-type="scale"]').each((function(index, element) {
+      $(element).find('input').each((function(ind, elm) {
+        $(elm).data('questionnaire-type', 'scale').data('msg-required', bootstrap.scaleErrorText);
+      }).bind(this));
+    }).bind(this));
+  };
 
   return Validation;
 

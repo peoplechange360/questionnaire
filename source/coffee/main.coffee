@@ -5,3 +5,4 @@ class Questionnaire
         options.scale = new ScaleTable(options);
         options.other = new Other(options);
         options.validation = new Validation(options);
+        options.table = new Table(options);

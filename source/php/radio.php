@@ -36,7 +36,8 @@ $typeArr = array(
 					"other" => array(
 						"form" => array(
 							"label" => "anders, namelijk:",
-							"name" => "anders2"
+							"name" => "anders2",
+							"required" => true
 						)
 					)
 				),
@@ -51,36 +52,59 @@ $typeArr = array(
 					"other" => array(
 						"form" => array(
 							"label" => "anders, namelijk:",
-							"name" => "anders"
+							"name" => "anders",
+							"required" => true
+						)
+					)
+				)
+			)
+		),
+		array(
+			"type" => $type,
+			"title" => "Zijn de bananen krom?",
+			"description" => "Denk aan de prioriteiten van onze mensen.",
+			"answers" => array(
+				array(
+					"form" => array(
+						"label" => "Omdat ze zo groeien",
+						"value" => "1",
+						"name" => "waarom1",
+						"required" => true
+					)
+				),
+				array(
+					"form" => array(
+						"label" => "Omdat ze zo genetisch zijn gemanupiluurd",
+						"value" => "2",
+						"name" => "waarom1",
+						"required" => true
+					),
+					"other" => array(
+						"form" => array(
+							"label" => "anders, namelijk:",
+							"name" => "anders21",
+							"required" => true
+						)
+					)
+				),
+				array(
+					"form" => array(
+						"label" => "Waarom testen",
+						"value" => "3",
+						"name" => "waarom1",
+						"required" => true,
+						"checked" => true
+					),
+					"other" => array(
+						"form" => array(
+							"label" => "anders, namelijk:",
+							"name" => "anders1",
+							"required" => true
 						)
 					)
 				)
 			)
 		)/*,
-		array(
-			"type" => "table",
-			"title" => "Zijn de bananen krom?",
-			"description" => "Denk aan de prioriteiten van onze mensen.",
-			"answers" => array(
-				array(
-					"header" => "Mee eens",
-					"label" => "Omdat ze zo groeien",
-					"value" => "1",
-					"name" => "waarom3"
-				),
-				array(
-					"header" => "Mee oneens",
-					"label" => "Omdat ze zo genetisch zijn gemanupiluurd",
-					"value" => "2",
-					"name" => "waarom3"
-				),
-				array(
-					"label" => "Waarom testen",
-					"value" => "3",
-					"name" => "waarom3"
-				)
-			)
-		),
 		array(
 			"type" => "checkbox",
 			"title" => "Waarom zijn de bananen krom?",

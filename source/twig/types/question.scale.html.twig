@@ -21,7 +21,7 @@
 								type="radio" data-label="{{ answer.form.label }}" name="{{ answer.form.name }}"
 								{%- if answer.form.checked %} checked="checked"{% endif -%}
 								{%- if answer.form.value %} value="{{ answer.form.value }}"{% endif -%}
-								{%- if answer.form.required == true %} required="required"{% endif -%}>
+								{%- if header.required == true %} required="required"{% endif -%}>
 						</label>
 					</td>
 				{%- endfor -%}

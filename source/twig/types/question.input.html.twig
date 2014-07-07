@@ -9,7 +9,8 @@
 				<div class="{{ type }}">
 					<label for="id_{{ answer.form.name }}">{{ answer.form.label }}</label>
 					<input class="form-control" id="id_{{ answer.form.name }}" type="{{ type }}" data-label="{{ answer.form.label }}" name="{{ answer.form.name }}"
-						{%- if answer.form.value %} value="{{ answer.form.value }}"{% endif %}>
+						{%- if answer.form.value %} value="{{ answer.form.value }}"{% endif %}
+						{%- if answer.form.required == true %} required="required"{% endif -%}>
 				</div>
 			</li>
 		{%- endfor -%}
