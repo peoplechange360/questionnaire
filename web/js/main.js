@@ -284,7 +284,7 @@ Validation = (function() {
         } else if (element.attr("type") === "checkbox" || element.attr("type") === "radio") {
           element.closest(bootstrap.radioGroup).addClass(bootstrap.errorClass);
         } else {
-          element.closest(bootstrap.inputContainer).addClass(bootstrap.errorClass);
+          element.closest(bootstrap.questionGroup).addClass(bootstrap.errorClass);
         }
       },
       unhighlight: function(element) {
@@ -295,7 +295,7 @@ Validation = (function() {
         } else if (element.attr("type") === "checkbox" || element.attr("type") === "radio") {
           element.closest(bootstrap.radioGroup).removeClass(bootstrap.errorClass);
         } else {
-          element.closest(bootstrap.inputContainer).removeClass(bootstrap.errorClass);
+          element.closest(bootstrap.questionGroup).removeClass(bootstrap.errorClass);
         }
       },
       submitHandler: function(form) {

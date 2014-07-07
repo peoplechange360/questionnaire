@@ -44,6 +44,16 @@ $typeArr = array(
 						"name" => "waarom2",
 						"required" => true,
 						"defaultOption" => "Kies een optie",
+						"options" => array(
+							array(
+								"title" => "Daarom",
+								"value" => "daarom"
+							),
+							array(
+								"title" => "Kaarom",
+								"value" => "kaarom"
+							)
+						)
 					)
 				),
 				array(
@@ -53,6 +63,16 @@ $typeArr = array(
 						"name" => "waarom3",
 						"required" => true,
 						"defaultOption" => "Kies een optie",
+						"options" => array(
+							array(
+								"title" => "Daarom",
+								"value" => "daarom"
+							),
+							array(
+								"title" => "Kaarom",
+								"value" => "kaarom"
+							)
+						)
 					)
 				)
 			)

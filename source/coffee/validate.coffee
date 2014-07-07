@@ -48,7 +48,7 @@ class Validation
 
 				else
 					element
-						.closest bootstrap.inputContainer
+						.closest bootstrap.questionGroup
 						.addClass bootstrap.errorClass
 
 				return
@@ -74,7 +74,7 @@ class Validation
 
 				else
 					element
-						.closest bootstrap.inputContainer
+						.closest bootstrap.questionGroup
 						.removeClass bootstrap.errorClass
 
 				return
@@ -85,16 +85,12 @@ class Validation
 
 			errorPlacement: (error, element) ->
 
-				# console.log error, element, element.parents('table[data-type="scale"]')
 				if (element.data('questionnaire-type') == "scale")
 
 					element
 						.closest("tr")
 						.children('.title')
 						.append(error)
-
-					# error
-					# 	.text(bootstrap.scaleErrorText)
 
 				else if (element.attr("type") == "checkbox" || element.attr("type") == "radio")
 
@@ -105,7 +101,6 @@ class Validation
 
 					error
 						.attr("class", error.attr("class") + " checkboxes-check")
-						# .text(bootstrap[element.attr("type") + 'ErrorText'])
 
 				else
 

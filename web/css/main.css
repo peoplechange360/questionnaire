@@ -4356,13 +4356,11 @@ header {
   border-top: 1px solid #dddddd;
 }
 .question .list-group .list-group-item:first-child {
-  border-radius: 0;
+  border-radius: 3px 3px 0 0;
+  border-top: 0 none;
 }
 .question .list-group .list-group-item.checked {
   background: #e9f2f9 !important;
-}
-.question .list-group .list-group-item:first-child {
-  border-top: 0 none;
 }
 .question .list-group .list-group-item.has-error,
 .question table tbody tr.has-error {
@@ -4402,6 +4400,9 @@ header {
   .question .list-group .list-group-item .options label {
     margin: 7px 0;
   }
+}
+.question .panel-heading + .panel-body > .panel > .panel-body {
+  border-radius: 0;
 }
 .question .other {
   padding: 0 15px 15px;
@@ -4565,6 +4566,9 @@ table[data-type="scale"] .select-row.has-error select {
 }
 table[data-type="scale"] tr.even td {
   background-color: #f9f9f9;
+}
+#questionnaire > .panel-footer {
+  overflow: hidden;
 }
 .fa {
   margin-right: 5px;

@@ -57,15 +57,12 @@
 			border-top: 1px solid @table-border-color;
 
 			&:first-child {
-				border-radius:0;
+				border-radius:3px 3px 0 0;
+				border-top: 0 none;
 			}
 
 			&.checked {
 				background: lighten(@brand-primary, 42%) !important;
-			}
-
-			&:first-child {
-				border-top: 0 none;
 			}
 
 			&.has-error {
@@ -110,6 +107,10 @@
 				}
 			}
 		}
+	}
+
+	.panel-heading + .panel-body > .panel > .panel-body {
+		border-radius: 0;
 	}
 
 	.other {
@@ -326,5 +327,11 @@ table[data-type="scale"] {
 		td {
 			background-color: @table-bg-accent;
 		}
+	}
+}
+
+#questionnaire {
+	> .panel-footer {
+		overflow:hidden;
 	}
 }
