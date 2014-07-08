@@ -4354,6 +4354,10 @@ header {
   padding: 0;
   border: 0 none;
   border-top: 1px solid #dddddd;
+  transition: background-color 0.5s ease-in-out;
+  -moz-transition: background-color 0.5s ease-in-out;
+  -webkit-transition: background-color 0.5s ease-in-out;
+  -o-transition: background-color 0.5s ease-in-out;
 }
 .question .list-group .list-group-item:first-child {
   border-radius: 3px 3px 0 0;
@@ -4361,6 +4365,9 @@ header {
 }
 .question .list-group .list-group-item.checked {
   background: #e9f2f9 !important;
+}
+.question .list-group .list-group-item.highlight {
+  background-color: #F00;
 }
 .question .list-group .list-group-item.has-error,
 .question table tbody tr.has-error {
@@ -4392,14 +4399,30 @@ header {
 .question .list-group .list-group-item .textarea textarea {
   resize: vertical;
 }
-.question .list-group .list-group-item .options {
+.question .list-group .list-group-item .options,
+.question .list-group .list-group-item .order {
   overflow: hidden;
   padding: 15px 0;
 }
 @media (min-width: 768px) {
-  .question .list-group .list-group-item .options label {
+  .question .list-group .list-group-item .options label,
+  .question .list-group .list-group-item .order label {
     margin: 7px 0;
   }
+}
+.question .list-group .list-group-item .handle {
+  cursor: move;
+  float: left;
+  padding: 20px 0 20px 20px;
+}
+.question .sortable-ghost {
+  opacity: .2;
+}
+.question [draggable="true"] select {
+  display: none;
+}
+.question [draggable="true"].sortable-ghost select {
+  display: block;
 }
 .question .panel-heading + .panel-body > .panel > .panel-body {
   border-radius: 0;

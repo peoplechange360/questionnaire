@@ -53,7 +53,7 @@ module.exports = function(grunt) {
                 dest: 'source/twig/bootstrap/bootstrap.functions.html.twig'
             },
             js: {
-                src: ['web/js/main.js', 'source/vendors/bootstrap/js/collapse.js'],
+                src: ['web/js/main.js', 'source/vendors/bootstrap/js/collapse.js', 'source/vendors/Sortable/Sortable.js'],
                 dest: 'web/js/main.js'
             }
         },

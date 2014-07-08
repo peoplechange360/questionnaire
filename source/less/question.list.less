@@ -56,6 +56,11 @@
 			border:0 none;
 			border-top: 1px solid @table-border-color;
 
+			transition: background-color .5s ease-in-out;
+			-moz-transition: background-color .5s ease-in-out;
+			-webkit-transition: background-color .5s ease-in-out;
+			-o-transition: background-color .5s ease-in-out;
+
 			&:first-child {
 				border-radius:3px 3px 0 0;
 				border-top: 0 none;
@@ -63,6 +68,10 @@
 
 			&.checked {
 				background: lighten(@brand-primary, 42%) !important;
+			}
+
+			&.highlight {
+				background-color: #F00;
 			}
 
 			&.has-error {
@@ -96,7 +105,8 @@
 					resize: vertical;
 				}
 			}
-			.options {
+			.options,
+			.order {
 				overflow:hidden;
 				padding: 15px 0;
 
@@ -105,6 +115,26 @@
 						margin: 7px 0;
 					}
 				}
+			}
+			.handle {
+				cursor:move;
+				float: left;
+				padding: 20px 0 20px 20px;
+			}
+		}
+	}
+	.sortable-ghost {
+		opacity:.2;
+	}
+
+	[draggable="true"] {
+		select {
+			display:none;
+		}
+
+		&.sortable-ghost {
+			select {
+				display:block;
 			}
 		}
 	}

@@ -3,16 +3,16 @@
 {% import 'bootstrap/bootstrap.functions.html.twig' as bootstrap %}
 
 {% block content %}
-    {% block progress %}
+	{% block progress %}
 	{% include 'layout/question.progress.html.twig' %}
 	{% endblock %}
 
-    {% block questions %}
+	{% block questions %}
 	{{ form_start(form, { 'attr': { 'id': 'questionnaireForm' }} ) }}
 		<article class="question panel panel-default" id="questionnaire">
 
 			<div class="panel-heading">
-				<div class="panel-title">
+				<div class="panel-title {% if category.description is defined %}withSubtitle{% endif %}">
 					{{ bootstrap.title(category.title, { 'icon': 'question-circle', 'subtitle': true  }) }}
 					{{ bootstrap.title(category.description, { 'subtitle': true }) }}
 				</div>

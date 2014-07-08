@@ -2,7 +2,6 @@ class Other
 	constructor: (options) ->
 		@options = options || {}
 		@options.other = @options.other || false
-		console.log @, @options
 
 		@options.other.each ((index, element) ->
 			elm = $ element

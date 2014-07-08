@@ -1,10 +1,10 @@
 <?php
 $typeArr = array(
 	'brandname' => 'Some dynamic brandname',
-	// 'introtext' => array(
-	//     "title" => "Lorem ipsum",
-	//     "description" => "Lorem ipsum dolar saté"
-	// ),
+	'introtext' => array(
+	    "title" => "Lorem ipsum",
+	    "description" => "Lorem ipsum dolar saté"
+	),
 	"category" => array(
 		"title" => "Persoonlijke prioriteiten",
 		// "description" => "Lorem ipsum dolar saté"
