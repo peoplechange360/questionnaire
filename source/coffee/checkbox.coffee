@@ -44,7 +44,7 @@ class Checkbox
 			return
 		).bind(@)
 
-		@checkboxChanged.call({ uncheckRadio: @uncheckRadio, scope: @ }, false)
+		@checkboxChanged.call({ uncheckRadio: @uncheckRadio, scope: @, options: @options }, false)
 
 	resetCheckboxes: () ->
 		@checkedElms = {}

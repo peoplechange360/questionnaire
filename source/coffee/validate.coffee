@@ -23,7 +23,7 @@ class Validation
 
 		@setCustomMessages()
 
-		@form.validate({
+		@validation = @form.validate({
 			errorElement: bootstrap.errorElement
 			errorClass: bootstrap.errorElementClass
 			ignore: ":hidden:not(.doValidate), .noValidation"

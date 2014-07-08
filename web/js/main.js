@@ -37,7 +37,8 @@ Checkbox = (function() {
     }).bind(this));
     this.checkboxChanged.call({
       uncheckRadio: this.uncheckRadio,
-      scope: this
+      scope: this,
+      options: this.options
     }, false);
   }
 
@@ -103,6 +104,7 @@ Other = (function() {
   function Other(options) {
     this.options = options || {};
     this.options.other = this.options.other || false;
+    console.log(this, this.options);
     this.options.other.each((function(index, element) {
       var elm, input, inputName;
       elm = $(element);
@@ -110,14 +112,16 @@ Other = (function() {
       inputName = input.attr("name");
       input.change(this.otherChanged.bind({
         input: input,
-        container: elm
+        container: elm,
+        options: this.options
       }));
       $($('input[name="' + inputName + '"]')).each((function(ind, elm2) {
         elm2 = $(elm2);
         if (elm2.is(input) === false) {
           elm2.change(this.otherChanged.bind({
             input: input,
-            container: elm
+            container: elm,
+            options: this.options
           }));
         }
       }).bind(this));
@@ -129,6 +133,13 @@ Other = (function() {
       this.container.removeClass("hide");
     } else {
       this.container.addClass("hide");
+      this.container.parents('.has-error').each((function(ind, elm) {
+        $(elm).removeClass('has-error');
+      }).bind(this));
+      this.container.removeClass('has-error');
+      this.container.children('.help-block').each((function(ind, elm) {
+        return $(elm).css('display', 'none');
+      }).bind(this));
     }
   };
 
@@ -272,7 +283,7 @@ Validation = (function() {
     this.form = options.form || this.form || false;
     bootstrap = this.bootstrap;
     this.setCustomMessages();
-    this.form.validate({
+    this.validation = this.form.validate({
       errorElement: bootstrap.errorElement,
       errorClass: bootstrap.errorElementClass,
       ignore: ":hidden:not(.doValidate), .noValidation",
