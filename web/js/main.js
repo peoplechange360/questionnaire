@@ -256,7 +256,7 @@ SortableClass = (function() {
         scope.showOrder.call(scope, $(this).closest('li'));
       });
     });
-    if (document.getElementById(this.list) === defined) {
+    if (document.getElementById(this.list) != null) {
       this.sortableInstance = new Sortable(document.getElementById(this.list), {
         handle: '.handle',
         onEnd: function(evt) {

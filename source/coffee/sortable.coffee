@@ -38,7 +38,7 @@ class SortableClass
 
 			return
 
-		if document.getElementById(@list) is defined
+		if document.getElementById(@list)? 
 			@sortableInstance = new Sortable(document.getElementById(@list), {
 				handle: '.handle'
 
