@@ -4433,9 +4433,9 @@ header {
 }
 .question .answers.panel-body {
   padding: 15px 15px 0;
-}
-.question .answers.panel-body > .panel {
-  margin-bottom: 0;
+  /*> .panel {
+			margin-bottom:0;
+		}*/
 }
 .question .mainTitle {
   font-weight: bold;

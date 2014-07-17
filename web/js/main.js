@@ -348,7 +348,6 @@ Validation = (function() {
     this.form = options.form || this.form || false;
     bootstrap = this.bootstrap;
     this.setCustomMessages();
-    this.form.attr("novalidate", true);
     this.validation = this.form.validate({
       errorElement: bootstrap.errorElement,
       errorClass: bootstrap.errorElementClass,
