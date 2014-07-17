@@ -23,6 +23,8 @@ class Validation
 
 		@setCustomMessages()
 
+		@form.attr "novalidate", "novalidate"
+
 		@validation = @form.validate({
 			errorElement: bootstrap.errorElement
 			errorClass: bootstrap.errorElementClass

@@ -302,7 +302,6 @@ Table = (function() {
       var className, elm;
       elm = $(trElm);
       className = num === 0 ? "odd" : "even";
-      console.log(elm, num, elm.hasClass('input-row'), className);
       if (elm.hasClass('input-row')) {
         elm.addClass(className);
         if (elm.next().hasClass('select-row')) {
@@ -349,6 +348,7 @@ Validation = (function() {
     this.form = options.form || this.form || false;
     bootstrap = this.bootstrap;
     this.setCustomMessages();
+    this.form.attr("novalidate", "novalidate");
     this.validation = this.form.validate({
       errorElement: bootstrap.errorElement,
       errorClass: bootstrap.errorElementClass,

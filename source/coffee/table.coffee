@@ -6,7 +6,6 @@ class Table
 		$('table[data-type="scale"] tbody tr.input-row').each ((trIndex, trElm) ->
 			elm = $(trElm)
 			className = if num == 0 then "odd" else "even"
-			console.log elm, num, elm.hasClass('input-row'), className
 
 			if elm.hasClass('input-row')
 				elm
