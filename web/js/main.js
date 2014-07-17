@@ -256,13 +256,15 @@ SortableClass = (function() {
         scope.showOrder.call(scope, $(this).closest('li'));
       });
     });
-    this.sortableInstance = new Sortable(document.getElementById(this.list), {
-      handle: '.handle',
-      onEnd: function(evt) {
-        scope.updateOrder.call(scope);
-        scope.showOrder.call(scope, $(evt.item));
-      }
-    });
+    if (document.getElementById(this.list) === defined) {
+      this.sortableInstance = new Sortable(document.getElementById(this.list), {
+        handle: '.handle',
+        onEnd: function(evt) {
+          scope.updateOrder.call(scope);
+          scope.showOrder.call(scope, $(evt.item));
+        }
+      });
+    }
     return;
   }
 

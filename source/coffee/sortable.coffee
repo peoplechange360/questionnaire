@@ -38,19 +38,20 @@ class SortableClass
 
 			return
 
-		@sortableInstance = new Sortable(document.getElementById(@list), {
-			handle: '.handle'
+		if document.getElementById(@list) is defined
+			@sortableInstance = new Sortable(document.getElementById(@list), {
+				handle: '.handle'
 
-			#onStart: (evt) ->
-				#var itemEl = evt.item;
-				# console.log "start", evt
+				#onStart: (evt) ->
+					#var itemEl = evt.item;
+					# console.log "start", evt
 
-			onEnd: (evt) ->
-				scope.updateOrder.call(scope)
-				scope.showOrder.call(scope, $(evt.item))
-				return
+				onEnd: (evt) ->
+					scope.updateOrder.call(scope)
+					scope.showOrder.call(scope, $(evt.item))
+					return
 
-		});
+			});
 		return
 
 	showOrder: (elm) ->
