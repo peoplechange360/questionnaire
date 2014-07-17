@@ -254,7 +254,9 @@
 		tbody {
 			tr {
 				&.has-error {
-					&:extend(.question .list-group .list-group-item.has-error);
+					td {
+						&:extend(.question .list-group .list-group-item.has-error);
+					}
 
 					span.help-block {
 						margin: 5px 0 0;
