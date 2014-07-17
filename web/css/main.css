@@ -4370,7 +4370,7 @@ header {
   background-color: #F00;
 }
 .question .list-group .list-group-item.has-error,
-.question table tbody tr.has-error {
+.question table tbody tr.has-error td {
   background: #f2dede !important;
 }
 .question .list-group .list-group-item .help-block {
@@ -4431,22 +4431,19 @@ header {
   padding: 0 15px 15px;
   margin: 0;
 }
-.question .answers {
-  padding: 15px 0 0;
+.question .answers.panel-body {
+  padding: 15px 15px 0;
 }
-.question .answers > .panel-body {
-  padding: 0 15px 15px;
-}
-.question .answers > .panel-body > .panel {
+.question .answers.panel-body > .panel {
   margin-bottom: 0;
 }
 .question .mainTitle {
   font-weight: bold;
-  margin-bottom: 3px;
 }
 .question .subTitle {
   font-style: italic;
   opacity: 0.7;
+  font-size: 0.9em;
 }
 .question input[type="checkbox"],
 .question input[type="radio"] {
@@ -4524,7 +4521,7 @@ header {
   margin: 0;
   padding: 0;
   text-align: center;
-  width: 10%;
+  width: 7%;
   position: relative;
 }
 .question table tbody tr td.title {
