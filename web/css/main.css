@@ -4324,6 +4324,10 @@ header {
   top: 4px;
   left: 0px;
 }
+.question .category-subtitle {
+  font-weight: normal;
+  font-size: 0.9em;
+}
 .question .list-group,
 .question .inner-question {
   padding: 0;
