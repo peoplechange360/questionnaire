@@ -4315,6 +4315,15 @@ header {
 .question > .panel-heading {
   font-weight: bold;
 }
+.question .panel-title.withSubtitle {
+  padding-left: 25px;
+  position: relative;
+}
+.question .panel-title.withSubtitle i {
+  position: absolute;
+  top: 4px;
+  left: 0px;
+}
 .question .list-group,
 .question .inner-question {
   padding: 0;
