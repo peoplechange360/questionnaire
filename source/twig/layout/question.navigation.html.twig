@@ -14,13 +14,15 @@
 				</button>
 			</div>
 			<div class="collapse navbar-collapse" id="userNavigation">
-				<ul class="nav navbar-nav">
-					{% for menuItem in menu -%}
-						<li>
-							{{ bootstrap.link(menuItem.title, menuItem.url, { 'icon': menuItem.icon|default(""), 'text': true }) }}
-						</li>
-					{%- endfor %}
-				</ul>
+				{% block navigation %}
+					<ul class="nav navbar-nav">
+						{% for menuItem in menu -%}
+							<li>
+								{{ bootstrap.link(menuItem.title, menuItem.url, { 'icon': menuItem.icon|default(""), 'text': true }) }}
+							</li>
+						{%- endfor %}
+					</ul>
+				{% endblock navigation %}
 			</div>
 		</div>
 	</nav>
