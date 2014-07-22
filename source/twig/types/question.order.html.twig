@@ -8,7 +8,7 @@
 					<div class="col-sm-1">
 						<select class="form-control" name="{{ anwser.form.name }}" id="id_{{ anwser.form.name }}"{% if anwser.form.required == true %} required="required"{% endif %}>
 							{%- for option in anwser.form.options -%}
-								<option value="{{ option.value }}"{% if option.checked == true %} selected="selected"{% endif %}>{{ option.title }}</option>
+								<option data-position="{{ loop.index }}" value="{{ option.value }}"{% if option.checked == true %} selected="selected"{% endif %}>{{ option.title }}</option>
 							{%- endfor -%}
 						</select>
 					</div>

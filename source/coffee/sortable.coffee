@@ -14,31 +14,34 @@ class SortableClass
 
 			elm
 				.prepend div
-				.find('select')
-				.data('position', ind+1)
+				.find 'select'
+				.data 'current-position', ind + 1
 				.change (evt) ->
-					current = parseFloat($(this).val()) - 1
+					selectedPosition = parseFloat($(this).find("option:selected").data('position'))
+					currentPosition = selectedPosition - 1
+					currentListPosition = parseFloat($(this).data('current-position'))
+					li = $(this).closest('li')
 
-					if current == 0
-						$("#"+scope.list)
-							.prepend($(this).closest('li'))
+					if currentPosition == 0
+						$ "#" + scope.list
+							.prepend li
 
-					else if current < parseFloat($(this).data('position'))
-						$("#"+scope.list+' li')
-							.eq(current)
-							.before($(this).closest('li'))
+					else if currentPosition < currentListPosition
+						$ "#" + scope.list + ' li'
+							.eq currentPosition
+							.before li
 					else
-						$("#"+scope.list+' li')
-							.eq(current)
-							.after($(this).closest('li'))
+						$ "#" + scope.list + ' li'
+							.eq currentPosition
+							.after li
 
-					scope.updateOrder.call(scope)
-					scope.showOrder.call(scope, $(this).closest('li'))
+					scope.updateOrder.call scope
+					scope.showOrder.call scope, $(this).closest('li')
 					return
 
 			return
 
-		if document.getElementById(@list)? 
+		if document.getElementById(@list)?
 			@sortableInstance = new Sortable(document.getElementById(@list), {
 				handle: '.handle'
 
@@ -60,7 +63,6 @@ class SortableClass
 			.css "backgroundColor", "#fffbdf"
 
 		setTimeout ->
-			console.log elm
 			elm
 				.attr "style", ""
 		, 1200
@@ -81,9 +83,16 @@ class SortableClass
 
 			selects = $(elm).find('select')
 			if selects.length > 0
+				#console.log $ selects
+				#$ selects
+				#	.val(ind + 1)
+				#	.data('new-position', ind + 1)
+				indx = ind + 1
+
 				$ selects
-					.val(ind + 1)
-					.data('position', ind + 1)
+					.data 'current-position', indx
+					.find 'option[data-position="' + indx + '"]'
+					.prop 'selected', 'selected'
 
 			return
 		).bind(@)

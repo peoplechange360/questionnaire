@@ -242,15 +242,18 @@ SortableClass = (function() {
         'class': 'handle',
         'html': '<i class="fa fa-arrows"></i>'
       });
-      elm.prepend(div).find('select').data('position', ind + 1).change(function(evt) {
-        var current;
-        current = parseFloat($(this).val()) - 1;
-        if (current === 0) {
-          $("#" + scope.list).prepend($(this).closest('li'));
-        } else if (current < parseFloat($(this).data('position'))) {
-          $("#" + scope.list + ' li').eq(current).before($(this).closest('li'));
+      elm.prepend(div).find('select').data('current-position', ind + 1).change(function(evt) {
+        var currentListPosition, currentPosition, li, selectedPosition;
+        selectedPosition = parseFloat($(this).find("option:selected").data('position'));
+        currentPosition = selectedPosition - 1;
+        currentListPosition = parseFloat($(this).data('current-position'));
+        li = $(this).closest('li');
+        if (currentPosition === 0) {
+          $("#" + scope.list).prepend(li);
+        } else if (currentPosition < currentListPosition) {
+          $("#" + scope.list + ' li').eq(currentPosition).before(li);
         } else {
-          $("#" + scope.list + ' li').eq(current).after($(this).closest('li'));
+          $("#" + scope.list + ' li').eq(currentPosition).after(li);
         }
         scope.updateOrder.call(scope);
         scope.showOrder.call(scope, $(this).closest('li'));
@@ -273,17 +276,17 @@ SortableClass = (function() {
     orginalCss = elm.css('backgroundColor');
     elm.css("backgroundColor", "#fffbdf");
     setTimeout(function() {
-      console.log(elm);
       return elm.attr("style", "");
     }, 1200);
   };
 
   SortableClass.prototype.updateOrder = function() {
     $("#" + this.list + ' li').each((function(ind, elm) {
-      var selects;
+      var indx, selects;
       selects = $(elm).find('select');
       if (selects.length > 0) {
-        $(selects).val(ind + 1).data('position', ind + 1);
+        indx = ind + 1;
+        $(selects).data('current-position', indx).find('option[data-position="' + indx + '"]').prop('selected', 'selected');
       }
     }).bind(this));
   };

@@ -28,28 +28,28 @@ $typeArr = array(
 						"options" => array(
 							array(
 								"title" => "1",
-								"value" => "1",
+								"value" => "12",
 								"checked" => true
 							),
 							array(
 								"title" => "2",
-								"value" => "2"
+								"value" => "22"
 							),
 							array(
 								"title" => "3",
-								"value" => "3"
+								"value" => "32"
 							),
 							array(
 								"title" => "4",
-								"value" => "4"
+								"value" => "42"
 							),
 							array(
 								"title" => "5",
-								"value" => "5"
+								"value" => "52"
 							),
 							array(
 								"title" => "6",
-								"value" => "6"
+								"value" => "62"
 							)
 						)
 					)
