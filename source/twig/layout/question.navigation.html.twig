@@ -18,7 +18,7 @@
 					<ul class="nav navbar-nav">
 						{% for menuItem in menu -%}
 							<li>
-								{{ bootstrap.link(menuItem.title, menuItem.url, { 'icon': menuItem.icon|default(""), 'text': true }) }}
+								{{ bootstrap.link(menuItem.title, menuItem.url, { 'icon': menuItem.icon|default(""), 'text': true, 'attr': menuItem.attr|default({}) }) }}
 							</li>
 						{%- endfor %}
 					</ul>

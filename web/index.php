@@ -28,6 +28,8 @@ if($type == "radio" || $type == "checkbox") {
     require_once '../source/php/options.php';
 }else if($type == "order") {
     require_once '../source/php/order.php';
+}else if($type == "login") {
+    require_once '../source/php/login.php';
 }
 
 
@@ -47,4 +49,24 @@ $menu = array(
 );
 $result = array_merge($typeArr, $menu);
 
-echo $twig->render('layout/template.content.html.twig', $result);
+
+if($type == "login") {
+    echo $twig->render('security/login.html.twig', $result);
+
+    $menu = array(
+        "menu" => array(
+            array(
+                "title" => "Uitloggen",
+                "icon" => "power-off",
+                "url" => "#"
+            ),
+            array(
+                "title" => "Instellingen",
+                "icon" => "cog",
+                "url" => "#"
+            )
+        )
+    );
+} else {
+    echo $twig->render('layout/template.content.html.twig', $result);
+}

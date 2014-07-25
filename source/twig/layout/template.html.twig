@@ -25,7 +25,8 @@
 
 		{% include 'layout/template.header.html.twig' %}
 		<div class="container">
-	        {% block content %}{% endblock %}
+			{% block content %}{% endblock %}
+			{% block fos_user_content %}{% endblock fos_user_content %}
 		</div>
 		{% include 'layout/template.footer.html.twig' %}
 

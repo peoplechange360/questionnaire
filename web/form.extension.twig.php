@@ -15,7 +15,8 @@ class Project_Twig_Extension extends Twig_Extension
     public function getFunctions() {
         return array(
             'form_start' => new Twig_Function_Method($this, 'form_starts', array('is_safe' => array('html'))),
-            'form_end' => new Twig_Function_Method($this, 'form_ends', array('is_safe' => array('html')))
+            'form_end' => new Twig_Function_Method($this, 'form_ends', array('is_safe' => array('html'))),
+            'path' => new Twig_Function_Method($this, 'path', array('is_safe' => array('html')))
         );
     }
 
@@ -26,6 +27,16 @@ class Project_Twig_Extension extends Twig_Extension
         );
     }
 
+    public function path()
+    {
+        return '#';
+    }
+
+    public function trans($a)
+    {
+        return $a;
+    }
+
     public function form_starts($form, $options)
     {
         return '<form action="" id="'.$options['attr']['id'].'">';
@@ -34,11 +45,6 @@ class Project_Twig_Extension extends Twig_Extension
     public function form_ends()
     {
         return '</form>';
-    }
-
-    public function trans()
-    {
-        return '';
     }
 
     public function debug($a)
