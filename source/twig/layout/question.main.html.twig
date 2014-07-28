@@ -5,7 +5,7 @@
 	<div class="panel panel-default">
 
 		{%- if question.title is defined or question.description is defined -%}
-			<div class="panel-heading">
+			<div class="panel-heading panel-question-title">
 				{{- bootstrap.title(question.title, { 'subtitle': true, 'class': 'mainTitle' }) -}}
 				{{- bootstrap.title(question.description, { 'subtitle': true, 'class': 'subTitle' }) -}}
 			</div>
