@@ -1,13 +1,13 @@
 <?php
 $typeArr = array(
 	'brandname' => 'Some dynamic brandname',
-	// 'introtext' => array(
-	//     "title" => "Lorem ipsum",
-	//     "description" => "Lorem ipsum dolar saté"
-	// ),
+	'introtext' => array(
+	    "title" => "Introductie",
+	    "description" => 'Bedankt voor het meedoen aan <a href="#">PeopleChange scan</a>. Er zijn geen goede of foute antwoorden u kunt gewoon antwoord geven op basis van uw huidige gedachten en gevoelens.'
+	),
 	"category" => array(
-		"title" => "Persoonlijke prioriteiten",
-		"description" => "Lorem ipsum dolar saté"
+		"title" => "1. Afstemming met baan en organisatiecultuur",
+		//"description" => "Lorem ipsum dolar saté"
 	),
 	"form" => array(
 		"action" => "#"
@@ -15,8 +15,8 @@ $typeArr = array(
 	"questions" => array(
 		array(
 			"type" => $type,
-			"title" => "Waarom zijn de bananen krom?",
-			"description" => "Denk aan de prioriteiten van onze mensen.",
+			"title" => "Mijn baan vereist dat ik...",
+			//"description" => "Denk aan de prioriteiten van onze mensen.",
 			"answers" => array(
 				array(
 					"form" => array(
@@ -58,7 +58,7 @@ $typeArr = array(
 					)
 				)
 			)
-		),
+		)/*,
 		array(
 			"type" => $type,
 			"title" => "Zijn de bananen krom?",
@@ -104,7 +104,7 @@ $typeArr = array(
 					)
 				)
 			)
-		)/*,
+		),
 		array(
 			"type" => "checkbox",
 			"title" => "Waarom zijn de bananen krom?",

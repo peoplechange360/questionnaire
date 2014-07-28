@@ -17,7 +17,7 @@
 				{% block navigation %}
 					<ul class="nav navbar-nav">
 						{% for menuItem in menu -%}
-							<li>
+							<li class="{{ menuItem.class|default("") }}">
 								{{ bootstrap.link(menuItem.title, menuItem.url, { 'icon': menuItem.icon|default(""), 'text': true, 'attr': menuItem.attr|default({}) }) }}
 							</li>
 						{%- endfor %}

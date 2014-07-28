@@ -3,26 +3,33 @@
 {% import 'bootstrap/bootstrap.functions.html.twig' as bootstrap %}
 
 {% block content %}
-	{% block progress %}
-		{% include 'layout/question.progress.html.twig' %}
-	{% endblock %}
+
+	<div class="header">
+		<h1 id="logo">
+			{{ brandname }}
+		</h1>
+
+		{% block progress %}
+			{% include 'layout/question.progress.html.twig' %}
+		{% endblock %}
+	</div>
 
 	{% block questions %}
 	{{ form_start(form, { 'attr': { 'id': 'questionnaireForm' }} ) }}
 		<article class="question panel panel-default" id="questionnaire">
 
-			<div class="panel-heading">
+			{% if introtext is defined %}
+				{% include 'layout/question.intro.text.html.twig' %}
+			{% endif %}
+
+			<div class="panel-heading panel-category">
 				<div class="panel-title {% if category.description is defined %}withSubtitle{% endif %}">
-					{{ bootstrap.title(category.title, { 'icon': 'question-circle', 'subtitle': true  }) }}
+					{{ bootstrap.title(category.title, { 'subtitle': true  }) }}
 					{{ bootstrap.title(category.description, { 'subtitle': true }) }}
 				</div>
 			</div>
 
 			<div class="answers">
-				{% if introtext is defined %}
-					{% include 'layout/question.intro.text.html.twig' %}
-				{% endif %}
-
 				{% for question in questions %}
 					{% include 'types/question.' ~ question.type ~ '.html.twig' with question %}
 				{% endfor %}
