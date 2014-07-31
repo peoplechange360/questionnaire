@@ -5,38 +5,11 @@
 {% block content %}
 
 	<div class="header">
-		<h1 id="logo">
-			{{ brandname }}
-		</h1>
-
-		{% block progress %}
-			{% include 'layout/question.progress.html.twig' %}
-		{% endblock %}
+		<h1 id="logo">{{ brandname }}</h1>
+		{% block progress %}{% endblock progress %}
 	</div>
 
-	{% set error = app.session.flashbag.get('error') %}
-	{% if (error is not empty) %}
-		<div class="alert alert-danger alert-dismissible" role="alert">
-			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-			<ol>
-				{% for flashMessage in error %}
-					<li>{{ flashMessage }}</li>
-				{% endfor %}
-			</ol>
-		</div>
-	{% endif %}
-
-	{% set notice = app.session.flashbag.get('notice') %}
-	{% if (notice is not empty) %}
-		<div class="alert alert-info alert-dismissible" role="alert">
-			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-			<ol>
-				{% for flashMessage in notice %}
-					<li>{{ flashMessage }}</li>
-				{% endfor %}
-			</ol>
-		</div>
-	{% endif %}
+	{% block flash %}{% endblock flash %}
 
 	{% block questions %}
 	{{ form_start(form, { 'attr': { 'id': 'questionnaireForm' }} ) }}
