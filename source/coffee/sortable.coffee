@@ -87,7 +87,7 @@ class SortableClass
 
 		# Prepend all listing items based on their selected state (1,2,3,4,5,6,etc)
 		$(positions).each ((ind, elm) ->
-			$("#"+@list).prepend $(elm).closest("li")
+			$("#"+@list).append $(elm).closest("li")
 		).bind(@)
 
 		return

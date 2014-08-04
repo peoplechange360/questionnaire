@@ -291,7 +291,7 @@ SortableClass = (function() {
       }).bind(this));
     }).bind(this));
     $(positions).each((function(ind, elm) {
-      return $("#" + this.list).prepend($(elm).closest("li"));
+      return $("#" + this.list).append($(elm).closest("li"));
     }).bind(this));
   };
 
