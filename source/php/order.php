@@ -45,7 +45,7 @@ $typeArr = array(
 							array(
 								"title" => "5",
 								"value" => "52",
-								"checked" => true
+								// "checked" => true
 							),
 							array(
 								"title" => "6",
@@ -85,7 +85,7 @@ $typeArr = array(
 							array(
 								"title" => "6",
 								"value" => "6",
-								"checked" => true
+								//"checked" => true
 							)
 						)
 					)
@@ -113,7 +113,7 @@ $typeArr = array(
 							array(
 								"title" => "4",
 								"value" => "4",
-								"checked" => true
+								// "checked" => true
 							),
 							array(
 								"title" => "5",
@@ -141,7 +141,7 @@ $typeArr = array(
 							array(
 								"title" => "2",
 								"value" => "2",
-								"checked" => true
+								// "checked" => true
 							),
 							array(
 								"title" => "3",
@@ -173,7 +173,7 @@ $typeArr = array(
 							array(
 								"title" => "1",
 								"value" => "1",
-								"checked" => true
+								// "checked" => true
 							),
 							array(
 								"title" => "2",
@@ -208,7 +208,8 @@ $typeArr = array(
 						"options" => array(
 							array(
 								"title" => "1",
-								"value" => "1"
+								"value" => "1",
+								"checked" => true
 							),
 							array(
 								"title" => "2",
@@ -217,7 +218,7 @@ $typeArr = array(
 							array(
 								"title" => "3",
 								"value" => "3",
-								"checked" => true
+								// "checked" => true
 							),
 							array(
 								"title" => "4",

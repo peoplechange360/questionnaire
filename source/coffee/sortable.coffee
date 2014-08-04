@@ -69,7 +69,7 @@ class SortableClass
 
 		# Loop all listing items
 		$("#"+@list+' li').each ((ind, elm) ->
-			selects = $(elm).find('option:selected')
+			selects = $(elm).find('option[selected="selected"]')
 
 			# Store selected state into the array
 			$(selects).each ((ind, elm) ->
@@ -85,9 +85,9 @@ class SortableClass
 			return
 		).bind(@)
 
-		# Append all listing items based on their selected state (1,2,3,4,5,6,etc)
+		# Prepend all listing items based on their selected state (1,2,3,4,5,6,etc)
 		$(positions).each ((ind, elm) ->
-			$("#"+@list).append $(elm).closest("li")
+			$("#"+@list).prepend $(elm).closest("li")
 		).bind(@)
 
 		return

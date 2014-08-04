@@ -279,7 +279,7 @@ SortableClass = (function() {
     positions = [];
     $("#" + this.list + ' li').each((function(ind, elm) {
       var selects;
-      selects = $(elm).find('option:selected');
+      selects = $(elm).find('option[selected="selected"]');
       $(selects).each((function(ind, elm) {
         var curPosition;
         curPosition = $(elm).data('position');
@@ -291,7 +291,7 @@ SortableClass = (function() {
       }).bind(this));
     }).bind(this));
     $(positions).each((function(ind, elm) {
-      return $("#" + this.list).append($(elm).closest("li"));
+      return $("#" + this.list).prepend($(elm).closest("li"));
     }).bind(this));
   };
 
