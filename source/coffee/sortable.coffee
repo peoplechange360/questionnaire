@@ -37,6 +37,7 @@ class SortableClass
 
 					scope.updateOrder.call scope
 					scope.showOrder.call scope, $(this).closest('li')
+
 					return
 
 			return
@@ -45,20 +46,55 @@ class SortableClass
 			@sortableInstance = new Sortable(document.getElementById(@list), {
 				handle: '.handle'
 
-				#onStart: (evt) ->
-					#var itemEl = evt.item;
-					# console.log "start", evt
-
 				onEnd: (evt) ->
-					scope.updateOrder.call(scope)
-					scope.showOrder.call(scope, $(evt.item))
+					scope.updateOrder.call scope
+					scope.showOrder.call scope, $(evt.item)
 					return
 
 			});
+
+		# First change order so data-position match their position
+		scope.initOrder.call scope
+
+		# Update order
+		scope.updateOrder.call scope
+		scope.showOrder.call scope, $(this).closest('li')
+
+		return
+
+	initOrder: () ->
+
+		# Store position in loopable array
+		positions = []
+
+		# Loop all listing items
+		$("#"+@list+' li').each ((ind, elm) ->
+			selects = $(elm).find('option:selected')
+
+			# Store selected state into the array
+			$(selects).each ((ind, elm) ->
+				curPosition = $(elm).data('position')
+
+				if positions[curPosition]?
+					throw new Error "Order module position conflict: " + curPosition + " is selected twice.";
+				else
+					positions[curPosition] = elm;
+
+			).bind(@)
+
+			return
+		).bind(@)
+
+		# Append all listing items based on their selected state (1,2,3,4,5,6,etc)
+		$(positions).each ((ind, elm) ->
+			$("#"+@list).append $(elm).closest("li")
+		).bind(@)
+
 		return
 
 	showOrder: (elm) ->
-		orginalCss = elm.css('backgroundColor')
+		orginalCss = elm.css 'backgroundColor'
+
 		elm
 			.css "backgroundColor", "#fffbdf"
 
@@ -70,23 +106,11 @@ class SortableClass
 		return
 
 	updateOrder: () ->
-		# console.log $("#"+@list+' li select').find('[selected="selected"]')
-		# $("#"+@list+' li select').find('[selected="selected"]').each ((ind, elm) ->
-		# 	console.log elm
-		# 	$(elm).prop("selected", false)
-		# 	console.log elm
-		#
-		# 	return
-		# ).bind(@)
 
 		$("#"+@list+' li').each ((ind, elm) ->
 
 			selects = $(elm).find('select')
 			if selects.length > 0
-				#console.log $ selects
-				#$ selects
-				#	.val(ind + 1)
-				#	.data('new-position', ind + 1)
 				indx = ind + 1
 
 				$ selects

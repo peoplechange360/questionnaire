@@ -5,14 +5,14 @@
 		{%- for anwser in question.anwsers -%}
 			<li class="list-group-item">
 				<div class="{{ type }}">
-					<div class="col-sm-1">
+					<div class="col-sm-2">
 						<select class="form-control" name="{{ anwser.form.name }}" id="id_{{ anwser.form.name }}"{% if anwser.form.required == true %} required="required"{% endif %}>
 							{%- for option in anwser.form.options -%}
 								<option data-position="{{ loop.index }}" value="{{ option.value }}"{% if option.checked == true %} selected="selected"{% endif %}>{{ option.title }}</option>
 							{%- endfor -%}
 						</select>
 					</div>
-					<label for="id_{{ answer.form.name }}" class="col-sm-11">{{ anwser.form.label }}</label>
+					<label for="id_{{ answer.form.name }}" class="col-sm-10">{{ anwser.form.label }}</label>
 					{# <input class="form-control" id="id_{{ answer.form.name }}" type="{{ type }}" data-label="{{ answer.form.label }}" name="{{ answer.form.name }}"{% if answer.form.value %} value="{{ answer.form.value }}"{% endif %}> #}
 				</div>
 			</li>

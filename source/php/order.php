@@ -28,8 +28,7 @@ $typeArr = array(
 						"options" => array(
 							array(
 								"title" => "1",
-								"value" => "12",
-								"checked" => true
+								"value" => "12"
 							),
 							array(
 								"title" => "2",
@@ -45,7 +44,8 @@ $typeArr = array(
 							),
 							array(
 								"title" => "5",
-								"value" => "52"
+								"value" => "52",
+								"checked" => true
 							),
 							array(
 								"title" => "6",
@@ -68,8 +68,7 @@ $typeArr = array(
 							),
 							array(
 								"title" => "2",
-								"value" => "2",
-								"checked" => true
+								"value" => "2"
 							),
 							array(
 								"title" => "3",
@@ -85,7 +84,8 @@ $typeArr = array(
 							),
 							array(
 								"title" => "6",
-								"value" => "6"
+								"value" => "6",
+								"checked" => true
 							)
 						)
 					)
@@ -93,42 +93,6 @@ $typeArr = array(
 				array(
 					"form" => array(
 						"label" => "Me strikt houd aan een werkplanning of procedures; Telkens hetzelfde doe; Normen of apparatuur onderhoud en regels/voorschriften handhaaf.",
-						"value" => "3",
-						"name" => "waarom3",
-						"required" => true,
-						"defaultOption" => "Kies een optie",
-						"options" => array(
-							array(
-								"title" => "1",
-								"value" => "1"
-							),
-							array(
-								"title" => "2",
-								"value" => "2"
-							),
-							array(
-								"title" => "3",
-								"value" => "3",
-								"checked" => true
-							),
-							array(
-								"title" => "4",
-								"value" => "4"
-							),
-							array(
-								"title" => "5",
-								"value" => "5"
-							),
-							array(
-								"title" => "6",
-								"value" => "6"
-							)
-						)
-					)
-				),
-				array(
-					"form" => array(
-						"label" => "De beste actiekoers bepaal en die ten uitvoer breng; Ideeën en producten verkoop, binnen of buiten de organisatie; Het denken en doen van anderen beïnvloed.",
 						"value" => "3",
 						"name" => "waarom3",
 						"required" => true,
@@ -164,7 +128,7 @@ $typeArr = array(
 				),
 				array(
 					"form" => array(
-						"label" => "Werk doe dat bijdraagt aan onze gevoelens van persoonlijke waarde; Gehoor geef aan behoeften van anderen door een behulpzaam iemand te zijn; Van deze organisatie een meer heilzame, gezonde en prettige werkomgeving maak.",
+						"label" => "De beste actiekoers bepaal en die ten uitvoer breng; Ideeën en producten verkoop, binnen of buiten de organisatie; Het denken en doen van anderen beïnvloed.",
 						"value" => "3",
 						"name" => "waarom3",
 						"required" => true,
@@ -173,6 +137,43 @@ $typeArr = array(
 							array(
 								"title" => "1",
 								"value" => "1"
+							),
+							array(
+								"title" => "2",
+								"value" => "2",
+								"checked" => true
+							),
+							array(
+								"title" => "3",
+								"value" => "3"
+							),
+							array(
+								"title" => "4",
+								"value" => "4"
+							),
+							array(
+								"title" => "5",
+								"value" => "5"
+							),
+							array(
+								"title" => "6",
+								"value" => "6"
+							)
+						)
+					)
+				),
+				array(
+					"form" => array(
+						"label" => "Werk doe dat bijdraagt aan onze gevoelens van persoonlijke waarde; Gehoor geef aan behoeften van anderen door een behulpzaam iemand te zijn; Van deze organisatie een meer heilzame, gezonde en prettige werkomgeving maak.",
+						"value" => "3",
+						"name" => "waarom3",
+						"required" => true,
+						"defaultOption" => "Kies een optie",
+						"options" => array(
+							array(
+								"title" => "1",
+								"value" => "1",
+								"checked" => true
 							),
 							array(
 								"title" => "2",
@@ -188,8 +189,7 @@ $typeArr = array(
 							),
 							array(
 								"title" => "5",
-								"value" => "5",
-								"checked" => true
+								"value" => "5"
 							),
 							array(
 								"title" => "6",
@@ -216,7 +216,8 @@ $typeArr = array(
 							),
 							array(
 								"title" => "3",
-								"value" => "3"
+								"value" => "3",
+								"checked" => true
 							),
 							array(
 								"title" => "4",
@@ -228,8 +229,7 @@ $typeArr = array(
 							),
 							array(
 								"title" => "6",
-								"value" => "6",
-								"checked" => true
+								"value" => "6"
 							)
 						)
 					)

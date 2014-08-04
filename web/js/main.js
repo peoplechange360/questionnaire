@@ -268,8 +268,32 @@ SortableClass = (function() {
         }
       });
     }
+    scope.initOrder.call(scope);
+    scope.updateOrder.call(scope);
+    scope.showOrder.call(scope, $(this).closest('li'));
     return;
   }
+
+  SortableClass.prototype.initOrder = function() {
+    var positions;
+    positions = [];
+    $("#" + this.list + ' li').each((function(ind, elm) {
+      var selects;
+      selects = $(elm).find('option:selected');
+      $(selects).each((function(ind, elm) {
+        var curPosition;
+        curPosition = $(elm).data('position');
+        if (positions[curPosition] != null) {
+          throw new Error("Order module position conflict: " + curPosition + " is selected twice.");
+        } else {
+          return positions[curPosition] = elm;
+        }
+      }).bind(this));
+    }).bind(this));
+    $(positions).each((function(ind, elm) {
+      return $("#" + this.list).append($(elm).closest("li"));
+    }).bind(this));
+  };
 
   SortableClass.prototype.showOrder = function(elm) {
     var orginalCss;
