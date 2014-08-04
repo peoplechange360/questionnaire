@@ -27,7 +27,12 @@
 
 		{% include 'layout/template.header.html.twig' %}
 		<div class="container">
-			{% block errors %}{% endblock %}
+
+			<div class="header">
+				<h1 id="logo">{{ brandname }}</h1>
+				{% block progress %}{% endblock progress %}
+			</div>
+
 			{% block content %}{% endblock %}
 			{% block fos_user_content %}{% endblock fos_user_content %}
 		</div>

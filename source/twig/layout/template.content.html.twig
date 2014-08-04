@@ -4,42 +4,37 @@
 
 {% block content %}
 
-	<div class="header">
-		<h1 id="logo">{{ brandname }}</h1>
-		{% block progress %}{% endblock progress %}
-	</div>
-
 	{% block flash %}{% endblock flash %}
 
 	{% block questions %}
-	{{ form_start(form, { 'attr': { 'id': 'questionnaireForm' }} ) }}
-		<article class="question panel panel-default" id="questionnaire">
+		{{ form_start(form, { 'attr': { 'id': 'questionnaireForm' }} ) }}
+			<article class="question panel panel-default" id="questionnaire">
 
-			{% if introtext is defined %}
-				{% include 'layout/question.intro.text.html.twig' %}
-			{% endif %}
+				{% if introtext is defined %}
+					{% include 'layout/question.intro.text.html.twig' %}
+				{% endif %}
 
-			<div class="panel-heading panel-category">
-				<div class="panel-title {% if category.description is defined %}withSubtitle{% endif %}">
-					{{ bootstrap.title(category.title, { 'subtitle': true  }) }}
-					{{ bootstrap.title(category.description, { 'subtitle': true }) }}
+				<div class="panel-heading panel-category">
+					<div class="panel-title {% if category.description is defined %}withSubtitle{% endif %}">
+						{{ bootstrap.title(category.title, { 'subtitle': true  }) }}
+						{{ bootstrap.title(category.description, { 'subtitle': true }) }}
+					</div>
 				</div>
-			</div>
 
-			<div class="answers">
-				{% for question in questions %}
-					{% include 'types/question.' ~ question.type ~ '.html.twig' with question %}
-				{% endfor %}
-			</div>
+				<div class="answers">
+					{% for question in questions %}
+						{% include 'types/question.' ~ question.type ~ '.html.twig' with question %}
+					{% endfor %}
+				</div>
 
-			<div class="panel-footer">
-				{{ bootstrap.link("Vorige", "#", { 'class': 'btn-primary pull-left', 'icon': 'chevron-left' }) }}
-				{{ bootstrap.button("Volgende", "submit", { 'class': 'btn-primary pull-right', 'icon': 'chevron-right', 'icon-align': 'right' }) }}
-				{% include 'layout/question.pagination.html.twig' %}
-			</div>
+				<div class="panel-footer">
+					{{ bootstrap.link("Vorige", "#", { 'class': 'btn-primary pull-left', 'icon': 'chevron-left' }) }}
+					{{ bootstrap.button("Volgende", "submit", { 'class': 'btn-primary pull-right', 'icon': 'chevron-right', 'icon-align': 'right' }) }}
+					{% include 'layout/question.pagination.html.twig' %}
+				</div>
 
-		</article>
-	{{ form_end(form) }}
+			</article>
+		{{ form_end(form) }}
 	{% endblock %}
 {% endblock %}
 
