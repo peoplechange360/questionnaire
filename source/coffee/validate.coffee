@@ -116,7 +116,7 @@ class Validation
 			if $('#sonata_user_registration_form_plainPassword_second')?
 
 				$('#sonata_user_registration_form_plainPassword_second').rules("add", {
-					equalTo : "#password"
+					equalTo : "#sonata_user_registration_form_plainPassword_first"
 				});
 
 		return
