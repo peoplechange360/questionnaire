@@ -89,5 +89,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     //grunt.registerTask('watch', ['watch']);
-    grunt.registerTask('default', ['concat:twig','coffee','less','cssmin','concat:js']);
+    grunt.registerTask('default', ['concat:twig','coffee','less','cssmin','concat:js', 'uglify']);
 };

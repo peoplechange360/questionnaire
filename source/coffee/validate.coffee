@@ -112,12 +112,16 @@ class Validation
 				return
 		});
 
-		if $('#sonata_user_registration_form_plainPassword_first')?
-			if $('#sonata_user_registration_form_plainPassword_second')?
+		if $ '#sonata_user_registration_form_plainPassword_first'?
+			if $ '#sonata_user_registration_form_plainPassword_second'?
 
-				$('#sonata_user_registration_form_plainPassword_first').rules("add", {
-					equalTo : "#sonata_user_registration_form_plainPassword_second"
-				});
+				$ '#sonata_user_registration_form_plainPassword_second'
+					.rules "add",
+						equalTo : "#sonata_user_registration_form_plainPassword_first"
+
+				$ '#sonata_user_registration_form_plainPassword_first'
+					.rules "add",
+						equalTo : "#sonata_user_registration_form_plainPassword_second"
 
 		return
 
