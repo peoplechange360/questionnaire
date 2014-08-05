@@ -419,6 +419,13 @@ Validation = (function() {
         }
       }
     });
+    if ($('#sonata_user_registration_form_plainPassword_first') != null) {
+      if ($('#sonata_user_registration_form_plainPassword_second') != null) {
+        $('#sonata_user_registration_form_plainPassword_second').rules("add", {
+          equalTo: "#password"
+        });
+      }
+    }
     return;
   }
 

@@ -112,6 +112,13 @@ class Validation
 				return
 		});
 
+		if $('#sonata_user_registration_form_plainPassword_first')?
+			if $('#sonata_user_registration_form_plainPassword_second')?
+
+				$('#sonata_user_registration_form_plainPassword_second').rules("add", {
+					equalTo : "#password"
+				});
+
 		return
 
 	setCustomMessages: () ->
