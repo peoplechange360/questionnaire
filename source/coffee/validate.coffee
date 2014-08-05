@@ -119,10 +119,6 @@ class Validation
 					.rules "add",
 						equalTo : "#sonata_user_registration_form_plainPassword_first"
 
-				$ '#sonata_user_registration_form_plainPassword_first'
-					.rules "add",
-						equalTo : "#sonata_user_registration_form_plainPassword_second"
-
 		return
 
 	setCustomMessages: () ->
