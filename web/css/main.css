@@ -4440,6 +4440,14 @@ header {
 .question .well p {
   margin: 0;
 }
+@media (max-width: 480px) {
+  .question .well {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    margin-left: -15px !important;
+    margin-right: -15px !important;
+  }
+}
 .question .inner-question > .help-block {
   border-bottom: 1px solid #ebccd1;
   padding: 10px 15px 10px 15px;
@@ -4496,7 +4504,7 @@ header {
 .question .list-group .list-group-item .checkbox label {
   display: block;
   margin: 0;
-  padding: 10px 0 10px 15px;
+  padding: 10px 15px;
 }
 .question .list-group .list-group-item .radio label input,
 .question .list-group .list-group-item .checkbox label input {
@@ -4671,9 +4679,13 @@ header {
   position: relative;
   display: table;
 }
+@media (max-width: 768px) {
+  .question .pagination {
+    display: none;
+  }
+}
 @media (max-width: 480px) {
   .container,
-  .panel,
   .panel-body {
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -4682,6 +4694,16 @@ header {
     border-right: 0 none !important;
     border-radius: 0;
   }
+}
+@media (max-width: 480px) {
+  .panel {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+}
+.panel .panel {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 .has-error .outer-radio {
   border-color: #ebccd1;

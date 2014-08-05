@@ -419,8 +419,8 @@ Validation = (function() {
         }
       }
     });
-    if ($('#sonata_user_registration_form_plainPassword_first' != null)) {
-      if ($('#sonata_user_registration_form_plainPassword_second' != null)) {
+    if ($('#sonata_user_registration_form_plainPassword_first').length) {
+      if ($('#sonata_user_registration_form_plainPassword_second').length) {
         $('#sonata_user_registration_form_plainPassword_second').rules("add", {
           equalTo: "#sonata_user_registration_form_plainPassword_first"
         });

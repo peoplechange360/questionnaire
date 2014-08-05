@@ -36,6 +36,13 @@
 		p {
 			margin: 0;
 		}
+
+		@media(max-width: @screen-xs-min) {
+			padding-left: 15px !important;
+			padding-right: 15px !important;
+			margin-left: -15px !important;
+			margin-right: -15px !important;
+		}
 	}
 
 	.inner-question {
@@ -108,7 +115,7 @@
 				label {
 					display:block;
 					margin:0;
-					padding: 10px 0 10px 15px;
+					padding: 10px 15px;
 
 					input {
 						margin: 3px 5px 3px 0;
@@ -331,12 +338,16 @@
 		margin: 0 auto !important;
 		position: relative;
 		display: table;
+
+		@media(max-width: @screen-sm-min) {
+			display:none;
+		}
 	}
 }
 
 .container,
-.panel,
-.panel-body {
+.panel-body/*,
+.panel-body*/ {
 
 	@media(max-width: @screen-xs-min) {
 		padding-left: 0 !important;
@@ -347,6 +358,17 @@
 		border-radius: 0;
 	}
 
+}
+.panel {
+	@media(max-width: @screen-xs-min) {
+		padding-left: 15px !important;
+		padding-right: 15px !important;
+	}
+
+	.panel {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
 }
 
 .has-error {
