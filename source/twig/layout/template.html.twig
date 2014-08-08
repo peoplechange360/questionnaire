@@ -25,7 +25,10 @@
 			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 		<![endif]-->
 
-		{% include 'layout/template.header.html.twig' %}
+		{% block header %}
+			{% include 'layout/template.header.html.twig' %}
+		{% endblock header %}
+
 		<div class="container">
 
 			<div class="header">
@@ -36,7 +39,10 @@
 			{% block content %}{% endblock %}
 			{% block fos_user_content %}{% endblock fos_user_content %}
 		</div>
-		{% include 'layout/template.footer.html.twig' %}
+
+		{% block footer %}
+			{% include 'layout/template.footer.html.twig' %}
+		{% endblock footer %}
 
 		{% block script %}
 			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
