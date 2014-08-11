@@ -84,10 +84,19 @@
 			align-content: flex-start;
 			align-items: stretch;
 
+			padding:0 10px;
+
 			.list-group-item {
 				order: 0;
 				flex: 1 0 50%;
 				align-self: auto;
+
+				&:nth-child(odd) {
+					margin-left:-5px;
+				}
+				&:nth-child(even) {
+					margin-right:-5px;
+				}
 			}
 		}
 

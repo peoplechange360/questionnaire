@@ -4476,11 +4476,18 @@ header {
   justify-content: space-around;
   align-content: flex-start;
   align-items: stretch;
+  padding: 0 10px;
 }
 .question .list-group.multipleLayout .list-group-item {
   order: 0;
   flex: 1 0 50%;
   align-self: auto;
+}
+.question .list-group.multipleLayout .list-group-item:nth-child(odd) {
+  margin-left: -5px;
+}
+.question .list-group.multipleLayout .list-group-item:nth-child(even) {
+  margin-right: -5px;
 }
 .question .list-group .list-group-item {
   padding: 0;
