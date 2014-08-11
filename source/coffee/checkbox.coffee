@@ -4,8 +4,43 @@ class Checkbox
 
 	constructor: (options) ->
 		@options = options || {};
-		{@checkboxes, @uncheckRadio} = options
+		{@checkboxes, @uncheckRadio, @allowedAnswers} = options
 		@uncheckRadio = @uncheckRadio || false;
+		@allowedAnswers = @allowedAnswers || null
+
+		@generateCheckboxes.call(@, false)
+
+	maximumCheckboxes: () ->
+
+		tmpSelector = @checkboxes
+			.filter ":checked"
+			.length
+
+		if (tmpSelector >= @allowedAnswers) and (@allowedAnswers != null)
+
+			$(@checkboxes.filter(":not(:checked)")).each ((index, element) ->
+				$ element
+					.prop "disabled", true
+					.closest ".list-group-item"
+					.addClass "disabled"
+
+				return
+			).bind(@)
+
+		else
+
+			$(@checkboxes.filter(":not(:checked)")).each ((index, element) ->
+				$ element
+					.prop "disabled", false
+					.closest ".list-group-item"
+					.removeClass "disabled"
+
+				return
+			).bind(@)
+
+		return
+
+	generateCheckboxes: () ->
 
 		$(@checkboxes).each ((index, element) ->
 			elm = $ element
@@ -45,6 +80,7 @@ class Checkbox
 		).bind(@)
 
 		@checkboxChanged.call({ uncheckRadio: @uncheckRadio, scope: @, options: @options }, false)
+		return
 
 	resetCheckboxes: () ->
 		@checkedElms = {}
@@ -95,4 +131,6 @@ class Checkbox
 
 			scope.checkedElms[inputName] = $ elm
 			return
+
+		scope.maximumCheckboxes.call(scope, false)
 		return

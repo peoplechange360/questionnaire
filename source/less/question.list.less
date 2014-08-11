@@ -95,6 +95,13 @@
 				background: lighten(@brand-primary, 42%) !important;
 			}
 
+			&.disabled {
+				opacity:0.6;
+				* {
+					cursor: not-allowed;
+				}
+			}
+
 			&.highlight {
 				background-color: #F00;
 			}
@@ -220,6 +227,9 @@
 				height: 14px;
 				border-radius: 8px;
 				margin: 2px;
+			}
+			.inner-checkbox {
+				border-radius: 0 !important;
 			}
 		}
 	}

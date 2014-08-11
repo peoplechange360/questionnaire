@@ -4485,6 +4485,12 @@ header {
 .question .list-group .list-group-item.checked {
   background: #e9f2f9 !important;
 }
+.question .list-group .list-group-item.disabled {
+  opacity: 0.6;
+}
+.question .list-group .list-group-item.disabled * {
+  cursor: not-allowed;
+}
 .question .list-group .list-group-item.highlight {
   background-color: #F00;
 }
@@ -4593,6 +4599,10 @@ header {
   height: 14px;
   border-radius: 8px;
   margin: 2px;
+}
+.question .outer-checkbox.checked .inner-checkbox,
+.question .outer-radio.checked .inner-checkbox {
+  border-radius: 0 !important;
 }
 .question .outer-radio {
   border-radius: 10px;

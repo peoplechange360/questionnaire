@@ -7,8 +7,27 @@ Checkbox = (function() {
 
   function Checkbox(options) {
     this.options = options || {};
-    this.checkboxes = options.checkboxes, this.uncheckRadio = options.uncheckRadio;
+    this.checkboxes = options.checkboxes, this.uncheckRadio = options.uncheckRadio, this.allowedAnswers = options.allowedAnswers;
     this.uncheckRadio = this.uncheckRadio || false;
+    this.allowedAnswers = this.allowedAnswers || null;
+    this.generateCheckboxes.call(this, false);
+  }
+
+  Checkbox.prototype.maximumCheckboxes = function() {
+    var tmpSelector;
+    tmpSelector = this.checkboxes.filter(":checked").length;
+    if ((tmpSelector >= this.allowedAnswers) && (this.allowedAnswers !== null)) {
+      $(this.checkboxes.filter(":not(:checked)")).each((function(index, element) {
+        $(element).prop("disabled", true).closest(".list-group-item").addClass("disabled");
+      }).bind(this));
+    } else {
+      $(this.checkboxes.filter(":not(:checked)")).each((function(index, element) {
+        $(element).prop("disabled", false).closest(".list-group-item").removeClass("disabled");
+      }).bind(this));
+    }
+  };
+
+  Checkbox.prototype.generateCheckboxes = function() {
     $(this.checkboxes).each((function(index, element) {
       var elm, inner, other, outer;
       elm = $(element);
@@ -40,7 +59,7 @@ Checkbox = (function() {
       scope: this,
       options: this.options
     }, false);
-  }
+  };
 
   Checkbox.prototype.resetCheckboxes = function() {
     return this.checkedElms = {};
@@ -76,6 +95,7 @@ Checkbox = (function() {
       }
       scope.checkedElms[inputName] = $(elm);
     });
+    scope.maximumCheckboxes.call(scope, false);
   };
 
   return Checkbox;
