@@ -4483,6 +4483,12 @@ header {
     order: 0;
     flex: 1 0 50%;
     align-self: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: stretch;
   }
   .question .list-group.multipleLayout .list-group-item:nth-child(odd) {
     margin-left: -10px;
@@ -4496,11 +4502,19 @@ header {
   }
   .question .list-group.multipleLayout .list-group-item .checkbox,
   .question .list-group.multipleLayout .list-group-item .radio {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    order: 0;
+    flex: 1 0 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: stretch;
+  }
+  .question .list-group.multipleLayout .list-group-item .checkbox label,
+  .question .list-group.multipleLayout .list-group-item .radio label {
+    order: 0;
+    flex: 1 0 100%;
   }
 }
 .question .list-group .list-group-item {
