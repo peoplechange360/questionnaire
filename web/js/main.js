@@ -14,8 +14,6 @@ Checkbox = (function() {
   }
 
   Checkbox.prototype.maximumCheckboxes = function() {
-    var tmpSelector;
-    tmpSelector = this.checkboxes.filter(":checked").length;
     if (this.allowedAnswers !== null) {
       if (this.checkboxes.filter(":checked").length >= this.allowedAnswers) {
         $(this.checkboxes.filter(":not(:checked)")).each((function(index, element) {
@@ -80,6 +78,7 @@ Checkbox = (function() {
             elm.prop('checked', false).prev().removeClass("checked");
             delete scope.checkedElms[inputName];
             elm.trigger("change");
+            scope.maximumCheckboxes.call(scope, false);
             return;
           }
         }

@@ -12,10 +12,6 @@ class Checkbox
 
 	maximumCheckboxes: () ->
 
-		tmpSelector = @checkboxes
-			.filter ":checked"
-			.length
-
 		if @allowedAnswers != null
 
 			if @checkboxes.filter(":checked").length >= @allowedAnswers
@@ -107,6 +103,7 @@ class Checkbox
 
 						delete scope.checkedElms[inputName]
 						elm.trigger "change"
+						scope.maximumCheckboxes.call(scope, false)
 						return
 
 		$('input[name="' + inputName + '"]').each (index, element) ->
