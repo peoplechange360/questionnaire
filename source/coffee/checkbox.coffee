@@ -16,27 +16,29 @@ class Checkbox
 			.filter ":checked"
 			.length
 
-		if (tmpSelector >= @allowedAnswers) and (@allowedAnswers != null)
+		if @allowedAnswers != null
 
-			$(@checkboxes.filter(":not(:checked)")).each ((index, element) ->
-				$ element
-					.prop "disabled", true
-					.closest ".list-group-item"
-					.addClass "disabled"
+			if @checkboxes.filter(":checked").length >= @allowedAnswers
 
-				return
-			).bind(@)
+				$(@checkboxes.filter(":not(:checked)")).each ((index, element) ->
+					$ element
+						.prop "disabled", true
+						.closest ".list-group-item"
+						.addClass "disabled"
 
-		else
+					return
+				).bind(@)
 
-			$(@checkboxes.filter(":not(:checked)")).each ((index, element) ->
-				$ element
-					.prop "disabled", false
-					.closest ".list-group-item"
-					.removeClass "disabled"
+			else
 
-				return
-			).bind(@)
+				$(@checkboxes).each ((index, element) ->
+					$ element
+						.prop "disabled", false
+						.closest ".list-group-item"
+						.removeClass "disabled"
+
+					return
+				).bind(@)
 
 		return
 

@@ -16,14 +16,16 @@ Checkbox = (function() {
   Checkbox.prototype.maximumCheckboxes = function() {
     var tmpSelector;
     tmpSelector = this.checkboxes.filter(":checked").length;
-    if ((tmpSelector >= this.allowedAnswers) && (this.allowedAnswers !== null)) {
-      $(this.checkboxes.filter(":not(:checked)")).each((function(index, element) {
-        $(element).prop("disabled", true).closest(".list-group-item").addClass("disabled");
-      }).bind(this));
-    } else {
-      $(this.checkboxes.filter(":not(:checked)")).each((function(index, element) {
-        $(element).prop("disabled", false).closest(".list-group-item").removeClass("disabled");
-      }).bind(this));
+    if (this.allowedAnswers !== null) {
+      if (this.checkboxes.filter(":checked").length >= this.allowedAnswers) {
+        $(this.checkboxes.filter(":not(:checked)")).each((function(index, element) {
+          $(element).prop("disabled", true).closest(".list-group-item").addClass("disabled");
+        }).bind(this));
+      } else {
+        $(this.checkboxes).each((function(index, element) {
+          $(element).prop("disabled", false).closest(".list-group-item").removeClass("disabled");
+        }).bind(this));
+      }
     }
   };
 
