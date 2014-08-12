@@ -4484,10 +4484,12 @@ header {
   align-self: auto;
 }
 .question .list-group.multipleLayout .list-group-item:nth-child(odd) {
-  margin-left: -5px;
+  margin-left: -10px;
+  margin-right: 5px;
 }
 .question .list-group.multipleLayout .list-group-item:nth-child(even) {
-  margin-right: -5px;
+  margin-right: -10px;
+  margin-left: 5px;
 }
 .question .list-group .list-group-item {
   padding: 0;
