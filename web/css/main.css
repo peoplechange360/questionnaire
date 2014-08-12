@@ -4494,7 +4494,8 @@ header {
     margin-left: 5px;
     background-color: white;
   }
-  .question .list-group.multipleLayout .list-group-item label {
+  .question .list-group.multipleLayout .list-group-item .checkbox,
+  .question .list-group.multipleLayout .list-group-item .radio {
     position: absolute;
     top: 0;
     left: 0;
