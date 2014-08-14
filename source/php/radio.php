@@ -1,6 +1,7 @@
 <?php
 $typeArr = array(
 	'brandname' => 'Some dynamic brandname',
+	'footertext' => 'Lorem ipsum',
 	'introtext' => array(
 	    "title" => "Introductie",
 	    "description" => 'Bedankt voor het meedoen aan <a href="#">PeopleChange scan</a>. Er zijn geen goede of foute antwoorden u kunt gewoon antwoord geven op basis van uw huidige gedachten en gevoelens.'

@@ -1,6 +1,7 @@
 <?php
 $typeArr = array(
 	'brandname' => 'Some dynamic brandname',
+	'footertext' => 'Lorem ipsum',
 	// 'introtext' => array(
 	//     "title" => "Lorem ipsum",
 	//     "description" => "Lorem ipsum dolar saté"
