@@ -16,10 +16,7 @@ class Table
 						.next()
 						.addClass className
 
-			if num == 0
-				num = 1
-			else
-				num = 0
+			num = if num == 0 then 1 else 0
 			return
 		).bind(@)
 

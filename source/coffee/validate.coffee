@@ -14,16 +14,20 @@ class Validation
 		radioErrorText: 'Selecteer één van de verplichten opties.'
 		checkboxErrorText: 'Selecteer minimaal één optie.'
 		scaleErrorText: 'Selecteer één van de verplichten opties.'
+		errorRequireFromGroup: 'Please fill at least {0} of these fields.'
 
 	constructor: (options) ->
 		@options = options || {};
 		@form = options.form || @form || false
+		@allowedAnswers = options.allowedAnswers || @allowedAnswers || null
 
 		bootstrap = @bootstrap
 
+		@addCustomMethods()
 		@setCustomMessages()
 
 		@validation = @form.validate({
+			debug: true,
 			errorElement: bootstrap.errorElement
 			errorClass: bootstrap.errorElementClass
 			ignore: ":hidden:not(.doValidate), .noValidation"
@@ -119,6 +123,19 @@ class Validation
 					.rules "add",
 						equalTo : "#sonata_user_registration_form_plainPassword_first"
 
+		if @allowedAnswers != null
+			if @allowedAnswers > 1
+
+				$(@form.selector + " .checkbox input").each ((index, element) ->
+
+					$("#" + $(element).attr('id'))
+						.rules "add",
+							require_from_group: [ @allowedAnswers, ".checkbox input" ]
+
+					return
+
+				).bind(this)
+
 		return
 
 	setCustomMessages: () ->
@@ -149,5 +166,36 @@ class Validation
 
 			return
 		).bind(@)
+
+		return
+
+	addCustomMethods: () ->
+		bootstrap = @bootstrap
+
+		jQuery.validator.addMethod "require_from_group", (value, element, options) ->
+			$fields = $ options[1], element.form
+			$fieldsFirst = $fields.eq 0
+			validator = $fieldsFirst.data("valid_req_grp") ? $.extend({}, this)
+
+			isValid = $fields.filter () ->
+				return $(this).is(":checked");
+			.length >= options[0]
+
+			# Store the cloned validator for future validation
+			$fieldsFirst.data "valid_req_grp", validator
+
+			# If element isn't being validated, run each require_from_group field's validation rules
+			if (!$(element).data("being_validated"))
+
+				$fields.data "being_validated", true
+				$fields.each () ->
+					validator.element this
+					return
+
+				$fields.data "being_validated", false;
+
+			return isValid
+
+		, jQuery.validator.format bootstrap.errorRequireFromGroup
 
 		return

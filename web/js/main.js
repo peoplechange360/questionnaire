@@ -176,9 +176,11 @@ ScaleTable = (function() {
     this.options.selectRequired = this.options.selectRequired || " -- Selecteer een optie --";
     this.scaleTable = options.scaleTable;
     $(this.scaleTable).each((function(index, element) {
-      var elm;
+      var elm, headers, trs;
       elm = $(element);
-      $(elm.find('tbody tr')).each((function(trIndex, trElm) {
+      headers = elm.find('thead th:not(.title)');
+      trs = elm.find('tbody tr');
+      $(trs).each((function(trIndex, trElm) {
         var sel, td, tr;
         options = $(trElm).find('td:not(.title) input');
         $(trElm).addClass("input-row");
@@ -202,8 +204,8 @@ ScaleTable = (function() {
           var tmp;
           inputElm = $(inputElm);
           tmp = $('<option>', {
-            html: inputElm.data('label'),
-            value: inputElm.val()
+            html: $(headers[tdIndex]).text() || "",
+            value: inputElm.val() || ""
           });
           inputElm.change(this.inputChanged.bind({
             select: sel,
@@ -356,11 +358,7 @@ Table = (function() {
           elm.next().addClass(className);
         }
       }
-      if (num === 0) {
-        num = 1;
-      } else {
-        num = 0;
-      }
+      num = num === 0 ? 1 : 0;
     }).bind(this));
     return;
   }
@@ -387,16 +385,20 @@ Validation = (function() {
     errorElementClass: 'help-block',
     radioErrorText: 'Selecteer één van de verplichten opties.',
     checkboxErrorText: 'Selecteer minimaal één optie.',
-    scaleErrorText: 'Selecteer één van de verplichten opties.'
+    scaleErrorText: 'Selecteer één van de verplichten opties.',
+    errorRequireFromGroup: 'Please fill at least {0} of these fields.'
   };
 
   function Validation(options) {
     var bootstrap;
     this.options = options || {};
     this.form = options.form || this.form || false;
+    this.allowedAnswers = options.allowedAnswers || this.allowedAnswers || null;
     bootstrap = this.bootstrap;
+    this.addCustomMethods();
     this.setCustomMessages();
     this.validation = this.form.validate({
+      debug: true,
       errorElement: bootstrap.errorElement,
       errorClass: bootstrap.errorElementClass,
       ignore: ":hidden:not(.doValidate), .noValidation",
@@ -447,6 +449,15 @@ Validation = (function() {
         });
       }
     }
+    if (this.allowedAnswers !== null) {
+      if (this.allowedAnswers > 1) {
+        $(this.form.selector + " .checkbox input").each((function(index, element) {
+          $("#" + $(element).attr('id')).rules("add", {
+            require_from_group: [this.allowedAnswers, ".checkbox input"]
+          });
+        }).bind(this));
+      }
+    }
     return;
   }
 
@@ -464,6 +475,29 @@ Validation = (function() {
         $(elm).data('questionnaire-type', 'scale').data('msg-required', bootstrap.scaleErrorText);
       }).bind(this));
     }).bind(this));
+  };
+
+  Validation.prototype.addCustomMethods = function() {
+    var bootstrap;
+    bootstrap = this.bootstrap;
+    jQuery.validator.addMethod("require_from_group", function(value, element, options) {
+      var $fields, $fieldsFirst, isValid, validator, _ref;
+      $fields = $(options[1], element.form);
+      $fieldsFirst = $fields.eq(0);
+      validator = (_ref = $fieldsFirst.data("valid_req_grp")) != null ? _ref : $.extend({}, this);
+      isValid = $fields.filter(function() {
+        return $(this).is(":checked");
+      }).length >= options[0];
+      $fieldsFirst.data("valid_req_grp", validator);
+      if (!$(element).data("being_validated")) {
+        $fields.data("being_validated", true);
+        $fields.each(function() {
+          validator.element(this);
+        });
+        $fields.data("being_validated", false);
+      }
+      return isValid;
+    }, jQuery.validator.format(bootstrap.errorRequireFromGroup));
   };
 
   return Validation;

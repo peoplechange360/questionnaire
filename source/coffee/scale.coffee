@@ -7,8 +7,10 @@ class ScaleTable
 
 		$(@scaleTable).each ((index, element) ->
 			elm = $ element
+			headers = elm.find('thead th:not(.title)')
+			trs = elm.find('tbody tr')
 
-			$(elm.find('tbody tr')).each ((trIndex, trElm) ->
+			$(trs).each ((trIndex, trElm) ->
 				options = $(trElm).find('td:not(.title) input')
 
 				$ trElm
@@ -33,9 +35,10 @@ class ScaleTable
 
 				$(options).each ((tdIndex, inputElm) ->
 					inputElm = $ inputElm
+
 					tmp = $ '<option>',
-						html: inputElm.data('label'),
-						value: inputElm.val()
+						html: $(headers[tdIndex]).text() || "",
+						value: inputElm.val() || ""
 
 					inputElm.change @inputChanged.bind({ select: sel, input: inputElm, tr: $(trElm) })
 					inputElm.on "inputChanged", @inputChanged.bind({ select: sel, input: inputElm, tr: $(trElm) })
