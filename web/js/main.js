@@ -351,7 +351,7 @@ TabIndex = (function() {
   function TabIndex(options) {
     this.options = options || {};
     this.form = options.form || this.form || false;
-    this.form.find("button, input").each((function(index, element) {
+    this.form.find("input, button[data-type='next']").each((function(index, element) {
       return $(element).attr("tabindex", index + 1).on("focus", function() {
         if ($(this).attr("type") === "radio" || $(this).attr("type") === "checkbox") {
           return $(this).closest(".list-group-item").addClass("focused");
@@ -412,7 +412,7 @@ Validation = (function() {
     radioErrorText: 'Selecteer één van de verplichten opties.',
     checkboxErrorText: 'Selecteer minimaal één optie.',
     scaleErrorText: 'Selecteer één van de verplichten opties.',
-    errorRequireFromGroup: 'Please fill at least {0} of these fields.'
+    errorRequireFromGroup: 'U dient tenminste {0} velden in te vullen.'
   };
 
   function Validation(options) {

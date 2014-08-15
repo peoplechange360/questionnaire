@@ -14,7 +14,7 @@ class Validation
 		radioErrorText: 'Selecteer één van de verplichten opties.'
 		checkboxErrorText: 'Selecteer minimaal één optie.'
 		scaleErrorText: 'Selecteer één van de verplichten opties.'
-		errorRequireFromGroup: 'Please fill at least {0} of these fields.'
+		errorRequireFromGroup: 'U dient tenminste {0} velden in te vullen.'
 
 	constructor: (options) ->
 		@options = options || {};

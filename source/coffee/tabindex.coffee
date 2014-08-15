@@ -5,7 +5,7 @@ class TabIndex
         @options = options || {}
         @form = options.form || @form || false
 
-        @form.find("button, input").each ((index, element) ->
+        @form.find("input, button[data-type='next']").each ((index, element) ->
 
             $ element
                 .attr "tabindex", (index + 1)
