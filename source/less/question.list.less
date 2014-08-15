@@ -1,4 +1,12 @@
 .question {
+
+	input.hide {
+		display: block !important;
+		position: absolute;
+		left: -5000px;
+		top: -5000px;
+	}
+
 	> .panel-heading {
 		font-weight:bold;
 	}
@@ -260,7 +268,8 @@
 	}
 
 	label:hover,
-	.checked label {
+	.checked label,
+	.focused label  {
 		.outer-checkbox,
 		.outer-radio {
 			border-color: #B8B8B8;

@@ -6,5 +6,6 @@ class Questionnaire
         options.other = new Other(options);
         options.validation = new Validation(options);
         options.table = new Table(options);
+        options.tabindex = new TabIndex(options);
 
         options.sortable = new SortableClass(options);

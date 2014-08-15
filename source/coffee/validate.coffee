@@ -27,7 +27,6 @@ class Validation
 		@setCustomMessages()
 
 		@validation = @form.validate({
-			debug: true,
 			errorElement: bootstrap.errorElement
 			errorClass: bootstrap.errorElementClass
 			ignore: ":hidden:not(.doValidate), .noValidation"
@@ -128,7 +127,7 @@ class Validation
 
 				$(@form.selector + " .checkbox input").each ((index, element) ->
 
-					$("#" + $(element).attr('id'))
+					$(element)
 						.rules "add",
 							require_from_group: [ @allowedAnswers, ".checkbox input" ]
 

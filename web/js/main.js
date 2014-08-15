@@ -113,6 +113,7 @@ Questionnaire = (function() {
     options.other = new Other(options);
     options.validation = new Validation(options);
     options.table = new Table(options);
+    options.tabindex = new TabIndex(options);
     options.sortable = new SortableClass(options);
   }
 
@@ -342,6 +343,31 @@ SortableClass = (function() {
 
 })();
 
+var TabIndex;
+
+TabIndex = (function() {
+  TabIndex.prototype.form = $("#questionnaireForm");
+
+  function TabIndex(options) {
+    this.options = options || {};
+    this.form = options.form || this.form || false;
+    this.form.find("button, input").each((function(index, element) {
+      return $(element).attr("tabindex", index + 1).on("focus", function() {
+        if ($(this).attr("type") === "radio" || $(this).attr("type") === "checkbox") {
+          return $(this).closest(".list-group-item").addClass("focused");
+        }
+      }).on("blur", function() {
+        if ($(this).attr("type") === "radio" || $(this).attr("type") === "checkbox") {
+          return $(this).closest(".list-group-item").removeClass("focused");
+        }
+      });
+    }).bind(this));
+  }
+
+  return TabIndex;
+
+})();
+
 var Table;
 
 Table = (function() {
@@ -398,7 +424,6 @@ Validation = (function() {
     this.addCustomMethods();
     this.setCustomMessages();
     this.validation = this.form.validate({
-      debug: true,
       errorElement: bootstrap.errorElement,
       errorClass: bootstrap.errorElementClass,
       ignore: ":hidden:not(.doValidate), .noValidation",
@@ -452,7 +477,7 @@ Validation = (function() {
     if (this.allowedAnswers !== null) {
       if (this.allowedAnswers > 1) {
         $(this.form.selector + " .checkbox input").each((function(index, element) {
-          $("#" + $(element).attr('id')).rules("add", {
+          $(element).rules("add", {
             require_from_group: [this.allowedAnswers, ".checkbox input"]
           });
         }).bind(this));

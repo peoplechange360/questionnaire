@@ -4410,6 +4410,12 @@ header {
     float: right;
   }
 }
+.question input.hide {
+  display: block !important;
+  position: absolute;
+  left: -5000px;
+  top: -5000px;
+}
 .question > .panel-heading {
   font-weight: bold;
 }
@@ -4626,8 +4632,10 @@ header {
 }
 .question label:hover .outer-checkbox,
 .question .checked label .outer-checkbox,
+.question .focused label .outer-checkbox,
 .question label:hover .outer-radio,
-.question .checked label .outer-radio {
+.question .checked label .outer-radio,
+.question .focused label .outer-radio {
   border-color: #B8B8B8;
 }
 .question .outer-checkbox,
