@@ -1,5 +1,5 @@
 class Validation
-	form: $ "#questionnaireForm"
+	form: $ "#questionnaireForm, #questionnaireForm2"
 	bootstrap:
 		input: '.form-group'
 		inputContainer: '.input'

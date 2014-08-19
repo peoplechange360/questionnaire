@@ -1,5 +1,5 @@
 class TabIndex
-    form: $ "#questionnaireForm"
+    form: $ "#questionnaireForm, #questionnaireForm2"
 
     constructor: (options) ->
         @options = options || {}
