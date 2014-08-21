@@ -7,7 +7,16 @@
 		{% set options = options|merge({ 'class': 'col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2' }) %}
 	{% endif %}
 
-    <div class="panel panel-{{ type|default("default") }} {{ options.class|default("") }}">
+    {% if options.big is defined %}
+        {% set options = options|merge({ 'class': 'col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3' }) %}
+    {% endif %}
+
+    {% set id = "" %}
+    {% if options.id is defined %}
+        {% set id = ' id="' ~ options.id ~ '"' %}
+    {% endif %}
+
+    <div class="panel panel-{{ type|default("default") }} {{ options.class|default("") }}"{{ id|raw }}>
 {%- endmacro -%}
 
 {%- macro end_panel() -%}

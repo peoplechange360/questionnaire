@@ -5,8 +5,14 @@
         {%- set options = {} -%}
     {%- endif -%}
 
-    <div class="alert alert-{{ type }} alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    {% if options.close is defined %}
+        {% set showAlert = options.close %}
+    {% else %}
+        {% set showAlert = true %}
+    {% endif }
+
+    <div class="alert alert-{{ type }} {% if showAlert is true %}alert-dismissible{% endif %}" role="alert">
+        {% if showAlert is true %}<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>{% endif %}
         {{ title|raw }}
     </div>
 
@@ -109,7 +115,16 @@
 		{% set options = options|merge({ 'class': 'col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2' }) %}
 	{% endif %}
 
-    <div class="panel panel-{{ type|default("default") }} {{ options.class|default("") }}">
+    {% if options.big is defined %}
+        {% set options = options|merge({ 'class': 'col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3' }) %}
+    {% endif %}
+
+    {% set id = "" %}
+    {% if options.id is defined %}
+        {% set id = ' id="' ~ options.id ~ '"' %}
+    {% endif %}
+
+    <div class="panel panel-{{ type|default("default") }} {{ options.class|default("") }}"{{ id|raw }}>
 {%- endmacro -%}
 
 {%- macro end_panel() -%}
