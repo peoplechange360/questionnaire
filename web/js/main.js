@@ -346,7 +346,7 @@ SortableClass = (function() {
 var TabIndex;
 
 TabIndex = (function() {
-  TabIndex.prototype.form = $("#questionnaireForm, #questionnaireForm2");
+  TabIndex.prototype.form = $("#questionnaireForm");
 
   function TabIndex(options) {
     this.options = options || {};
@@ -396,7 +396,7 @@ Table = (function() {
 var Validation;
 
 Validation = (function() {
-  Validation.prototype.form = $("#questionnaireForm, #questionnaireForm2");
+  Validation.prototype.form = $("#questionnaireForm");
 
   Validation.prototype.bootstrap = {
     input: '.form-group',

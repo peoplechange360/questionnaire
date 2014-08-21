@@ -36,6 +36,10 @@
 
 			{{ title|default("")|raw }}
 
+			{%- if options.extra is defined -%}
+				{{ options.extra|raw }}
+			{%- endif -%}
+
 			{%- if options.icon is defined and options.icon != "" and options['icon-align'] is defined -%}
 				{%- if options['icon-align'] == 'right' -%}{{ bs.icon(options.icon, { 'class': 'fa-aligned-right' }) }}{%- endif -%}
 			{%- endif -%}

@@ -1,0 +1,15 @@
+{%- macro panel(type, options) -%}
+    {%- if options is null -%}
+        {%- set options = {} -%}
+    {%- endif -%}
+
+	{% if options.small is defined %}
+		{% set options = options|merge({ 'class': 'col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2' }) %}
+	{% endif %}
+
+    <div class="panel panel-{{ type|default("default") }} {{ options.class|default("") }}">
+{%- endmacro -%}
+
+{%- macro end_panel() -%}
+    </div>
+{%- endmacro -%}

@@ -1,5 +1,17 @@
 {# IMPORTANT!! DO NOT EDIT THIS GENERATED FILE. READ "twig/boostrap/README.md" #}
 
+{%- macro alert(title, type, options) -%}
+    {%- if options is null -%}
+        {%- set options = {} -%}
+    {%- endif -%}
+
+    <div class="alert alert-{{ type }} alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        {{ title|raw }}
+    </div>
+
+{%- endmacro -%}
+
 {%- macro button(title, type, options) -%}
 	{%- import _self as bs -%}
 
@@ -88,6 +100,22 @@
     </a>
 {%- endmacro -%}
 
+{%- macro panel(type, options) -%}
+    {%- if options is null -%}
+        {%- set options = {} -%}
+    {%- endif -%}
+
+	{% if options.small is defined %}
+		{% set options = options|merge({ 'class': 'col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2' }) %}
+	{% endif %}
+
+    <div class="panel panel-{{ type|default("default") }} {{ options.class|default("") }}">
+{%- endmacro -%}
+
+{%- macro end_panel() -%}
+    </div>
+{%- endmacro -%}
+
 {%- macro title(title, options) -%}
 	{%- import _self as bs -%}
 
@@ -125,6 +153,10 @@
 			{%- endif -%}
 
 			{{ title|default("")|raw }}
+
+			{%- if options.extra is defined -%}
+				{{ options.extra|raw }}
+			{%- endif -%}
 
 			{%- if options.icon is defined and options.icon != "" and options['icon-align'] is defined -%}
 				{%- if options['icon-align'] == 'right' -%}{{ bs.icon(options.icon, { 'class': 'fa-aligned-right' }) }}{%- endif -%}
