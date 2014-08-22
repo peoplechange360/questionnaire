@@ -4,11 +4,11 @@
     {%- endif -%}
 
 	{% if options.small is defined %}
-		{% set options = options|merge({ 'class': 'col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2' }) %}
+		{% set options = options|merge({ 'class': 'col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 ' ~ options.class|default("") }) %}
 	{% endif %}
 
     {% if options.big is defined %}
-        {% set options = options|merge({ 'class': 'col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3' }) %}
+        {% set options = options|merge({ 'class': 'col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 ' ~ options.class|default("") }) %}
     {% endif %}
 
     {% set id = "" %}
