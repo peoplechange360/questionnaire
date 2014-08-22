@@ -225,6 +225,7 @@ ScaleTable = (function() {
   }
 
   ScaleTable.prototype.inputChanged = function(e) {
+    e.preventDefault();
     if (this.tr.find(":checked").length === 0) {
       this.select.val("");
     } else {
@@ -234,6 +235,7 @@ ScaleTable = (function() {
 
   ScaleTable.prototype.selectChanged = function(e) {
     var active, input;
+    e.preventDefault();
     active = this.select.find(":selected");
     input = this.tr.find("input[value='" + active.val() + "']");
     if (active.val() === "") {

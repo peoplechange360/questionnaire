@@ -4414,7 +4414,6 @@ header {
   display: block !important;
   position: absolute;
   left: -5000px;
-  top: -5000px;
 }
 .question > .panel-heading {
   font-weight: bold;

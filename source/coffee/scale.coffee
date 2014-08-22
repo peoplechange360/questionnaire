@@ -54,6 +54,8 @@ class ScaleTable
 		).bind(this)
 
 	inputChanged: (e) ->
+		e.preventDefault()
+
 		if @tr.find(":checked").length is 0
 			@select.val("")
 		else
@@ -61,6 +63,8 @@ class ScaleTable
 		return
 
 	selectChanged: (e) ->
+		e.preventDefault()
+
 		active = @select.find(":selected")
 		input = @tr.find("input[value='" + active.val() + "']")
 
