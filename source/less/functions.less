@@ -1,0 +1,56 @@
+.flex-container(@direction: horizontal, @row: row, @wrap: wrap, @justify: start, @align: strech, @content: space-around) {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+
+    -webkit-box-orient: @direction;
+    -moz-box-orient: @direction;
+
+    -webkit-flex-direction: @row;
+    -ms-flex-direction: @row;
+    flex-direction: @row;
+
+    -webkit-flex-wrap: @wrap;
+    -ms-flex-wrap: @wrap;
+    flex-wrap: @wrap;
+
+    -webkit-box-pack: @justify;
+    -moz-box-pack: @justify;
+    -webkit-justify-content: ~"flex-@{justify}";
+    -ms-flex-pack: @justify;
+    justify-content: ~"flex-@{justify}";
+
+    -ms-flex-line-pack: distribute;
+    -webkit-align-content: @content;
+    align-content: @content;
+
+    -webkit-box-align: @align;
+    -moz-box-align: @align;
+    -webkit-align-items: @align;
+    -ms-flex-align: @align;
+    align-items: @align;
+}
+
+.flex(@width: 100%, @strech: 1, @shrink: 0, @align: auto, @order: 0, @ordinalGroup: 1) {
+    -webkit-box-ordinal-group: @ordinalGroup;
+    -moz-box-ordinal-group: @ordinalGroup;
+    -webkit-order: @order;
+    -ms-flex-order: @order;
+    order: @order;
+
+    -webkit-box-flex: @strech;
+    -moz-box-flex: @strech;
+
+    -webkit-flex: @strech @shrink @width;
+    -ms-flex: @strech @shrink @width;
+    flex: @strech @shrink @width;
+
+    -webkit-align-self: @align;
+    -ms-flex-item-align: @align;
+    align-self: @align;
+}

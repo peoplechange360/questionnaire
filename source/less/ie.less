@@ -1,0 +1,21 @@
+.lt-ie10 {
+    .question {
+        @media(min-width: @screen-md-min) {
+            .list-group {
+                margin:0;
+                padding:0;
+
+                .list-group-item {
+                    margin:0 0 5px !important;
+                    background-color: white;
+                }
+
+                &.list-group-striped {
+                    .list-group-item:nth-child(even) {
+                        background-color: @table-bg-accent;
+                    }
+                }
+            }
+        }
+    }
+}

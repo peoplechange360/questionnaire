@@ -83,28 +83,15 @@
 			}
 		}
 
+
 		@media(min-width: @screen-md-min) {
 			&.multipleLayout {
-				display: flex;
-				flex-direction: row;
-				flex-wrap: wrap;
-				justify-content: space-around;
-				align-content: flex-start;
-				align-items: stretch;
-
+				.flex-container();
 				padding:0 10px;
 
 				.list-group-item {
-					order: 0;
-					flex: 1 0 50%;
-					align-self: auto;
-
-					display: flex;
-					flex-direction: row;
-					flex-wrap: nowrap;
-					justify-content: flex-start;
-					align-content: flex-start;
-					align-items: stretch;
+					.flex(50%, 1, 0);
+					.flex-container();
 
 					&:nth-child(odd) {
 						margin-left: -10px;
@@ -119,19 +106,11 @@
 
 					.checkbox,
 					.radio {
-						order: 0;
-						flex: 1 0 100%;
-
-						display: flex;
-						flex-direction: row;
-						flex-wrap: nowrap;
-						justify-content: flex-start;
-						align-content: flex-start;
-						align-items: stretch;
+						.flex(100%, 1, 0);
+						.flex-container();
 
 						label {
-							order: 0;
-							flex: 1 0 100%;
+							.flex(100%, 1, 0);
 						}
 					}
 				}
