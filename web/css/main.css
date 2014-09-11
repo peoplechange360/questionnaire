@@ -4894,6 +4894,10 @@ table[data-type="scale"] tr.even td {
 .alert strong {
   display: block;
 }
+.btn.btn-xs {
+  font-size: 1.1em;
+  padding: 5px 10px;
+}
 @media (min-width: 992px) {
   .lt-ie10 .question .list-group {
     margin: 0;
