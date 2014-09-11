@@ -16,31 +16,30 @@ class Checkbox
 
 			if @checkboxes.filter(":checked").length >= @allowedAnswers
 
-				$(@checkboxes.filter(":not(:checked)")).each ((index, element) ->
+				$(@checkboxes.filter(":not(:checked)")).each (index, element) ->
 					$ element
 						.prop "disabled", true
 						.closest ".list-group-item"
 						.addClass "disabled"
 
 					return
-				).bind(@)
 
 			else
 
-				$(@checkboxes).each ((index, element) ->
+				$(@checkboxes).each (index, element) ->
 					$ element
 						.prop "disabled", false
 						.closest ".list-group-item"
 						.removeClass "disabled"
 
 					return
-				).bind(@)
 
 		return
 
 	generateCheckboxes: () ->
+		_self = @
 
-		$(@checkboxes).each ((index, element) ->
+		$(@checkboxes).each (index, element) ->
 			elm = $ element
 			outer = $ "<div>",
 				class: "outer-" + elm.attr "type"
@@ -63,19 +62,19 @@ class Checkbox
 					other
 						.removeClass "hide"
 
-				@checkedElms[$(elm).attr("name")] = $ elm
+				_self.checkedElms[$(elm).attr("name")] = $ elm
 
 			outer
 				.insertBefore(elm)
 				.append(inner)
 
 			elm
-				.click @checkboxChanged.bind({ uncheckRadio: @uncheckRadio, outer: outer, input: elm, scope: @ })
+				.click $.proxy(_self.checkboxChanged, { uncheckRadio: _self.uncheckRadio, outer: outer, input: elm, scope: _self })
+				#.click _self.checkboxChanged.bind({ uncheckRadio: _self.uncheckRadio, outer: outer, input: elm, scope: _self })
 				.addClass "hide"
 				.addClass "doValidate"
 
 			return
-		).bind(@)
 
 		@checkboxChanged.call({ uncheckRadio: @uncheckRadio, scope: @, options: @options }, false)
 		return

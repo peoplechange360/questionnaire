@@ -3,7 +3,7 @@ class Table
 	constructor: (options) ->
 
 		num = 0
-		$('table[data-type="scale"] tbody tr.input-row').each ((trIndex, trElm) ->
+		$('table[data-type="scale"] tbody tr.input-row').each (trIndex, trElm) ->
 			elm = $(trElm)
 			className = if num == 0 then "odd" else "even"
 
@@ -18,6 +18,5 @@ class Table
 
 			num = if num == 0 then 1 else 0
 			return
-		).bind(@)
 
 		return

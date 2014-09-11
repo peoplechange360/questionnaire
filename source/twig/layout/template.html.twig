@@ -32,10 +32,6 @@
 	</head>
 	<body{% if bodyClass is defined %} class="{{ bodyClass }}"{% endif %}>
 
-		<!--[if lt IE 7]>
-			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-		<![endif]-->
-
 		{% block header %}
 			{% include 'layout/template.header.html.twig' %}
 		{% endblock header %}

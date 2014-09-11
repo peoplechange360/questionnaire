@@ -11,9 +11,9 @@ class Validation
 		errorClass: 'has-error'
 		errorElement: 'span'
 		errorElementClass: 'help-block'
-		radioErrorText: 'Selecteer één van de verplichten opties.'
+		radioErrorText: 'Selecteer één van de verplichte opties.'
 		checkboxErrorText: 'Selecteer minimaal één optie.'
-		scaleErrorText: 'Selecteer één van de verplichten opties.'
+		scaleErrorText: 'Selecteer één van de verplichte opties.'
 		errorRequireFromGroup: 'U dient tenminste {0} velden in te vullen.'
 
 	constructor: (options) ->
@@ -22,6 +22,7 @@ class Validation
 		@allowedAnswers = options.allowedAnswers || @allowedAnswers || null
 
 		bootstrap = @bootstrap
+		_self = @
 
 		@addCustomMethods()
 		@setCustomMessages()
@@ -125,46 +126,40 @@ class Validation
 		if @allowedAnswers != null
 			if @allowedAnswers > 1
 
-				$(@form.selector + " .checkbox input").each ((index, element) ->
+				$(_self.form.selector + " .checkbox input").each (index, element) ->
 
 					$(element)
 						.rules "add",
-							require_from_group: [ @allowedAnswers, ".checkbox input" ]
+							require_from_group: [ _self.allowedAnswers, ".checkbox input" ]
 
 					return
-
-				).bind(this)
 
 		return
 
 	setCustomMessages: () ->
 		bootstrap = @bootstrap
 
-		$('input[type="radio"]').each ((index, element) ->
+		$('input[type="radio"]').each (index, element) ->
 			$ element
 				.data 'msg-required', bootstrap.radioErrorText
 			return
-		).bind(@)
 
-		$('input[type="checkbox"]').each ((index, element) ->
+		$('input[type="checkbox"]').each (index, element) ->
 			$ element
 				.data 'msg-required', bootstrap.checkboxErrorText
 			return
-		).bind(@)
 
-		$('table[data-type="scale"]').each ((index, element) ->
+		$('table[data-type="scale"]').each (index, element) ->
 
 			$ element
-				.find('input').each ((ind, elm) ->
+				.find('input').each (ind, elm) ->
 					$ elm
 						.data 'questionnaire-type', 'scale'
 						.data 'msg-required', bootstrap.scaleErrorText
 
 					return
-				).bind(@)
 
 			return
-		).bind(@)
 
 		return
 

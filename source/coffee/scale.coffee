@@ -5,12 +5,14 @@ class ScaleTable
 		@options.selectRequired = @options.selectRequired || " -- Selecteer een optie --";
 		{@scaleTable} = options
 
-		$(@scaleTable).each ((index, element) ->
+		_self = @
+
+		$(@scaleTable).each (index, element) ->
 			elm = $ element
 			headers = elm.find('thead th:not(.title)')
 			trs = elm.find('tbody tr')
 
-			$(trs).each ((trIndex, trElm) ->
+			$(trs).each (trIndex, trElm) ->
 				options = $(trElm).find('td:not(.title) input')
 
 				$ trElm
@@ -28,30 +30,27 @@ class ScaleTable
 
 				sel
 					.append($('<option>', {
-						text: @options.selectRequired,
+						text: _self.options.selectRequired,
 						value: ""
 					}))
-					.change @selectChanged.bind({ select: sel, tr: $(trElm), options: @.options })
+					.change $.proxy(_self.selectChanged, { select: sel, tr: $(trElm), options: _self.options })
 
-				$(options).each ((tdIndex, inputElm) ->
+				$(options).each (tdIndex, inputElm) ->
 					inputElm = $ inputElm
 
 					tmp = $ '<option>',
 						html: $(headers[tdIndex]).text() || "",
 						value: inputElm.val() || ""
 
-					inputElm.change @inputChanged.bind({ select: sel, input: inputElm, tr: $(trElm) })
-					inputElm.on "inputChanged", @inputChanged.bind({ select: sel, input: inputElm, tr: $(trElm) })
+					inputElm.change $.proxy(_self.inputChanged, { select: sel, input: inputElm, tr: $(trElm) })
+					inputElm.on "inputChanged", $.proxy(_self.inputChanged, { select: sel, input: inputElm, tr: $(trElm) })
 
 					sel.append tmp
 					return
-				).bind(this)
 
 				return
-			).bind(this)
 
 			return
-		).bind(this)
 
 	inputChanged: (e) ->
 		e.preventDefault()

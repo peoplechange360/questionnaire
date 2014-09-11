@@ -2,8 +2,9 @@ class Other
 	constructor: (options) ->
 		@options = options || {}
 		@options.other = @options.other || false
+		_self = @
 
-		@options.other.each ((index, element) ->
+		@options.other.each (index, element) ->
 			elm = $ element
 
 			input = elm
@@ -13,19 +14,17 @@ class Other
 			inputName = input.attr "name"
 
 			input
-				.change @otherChanged.bind({ input: input, container: elm, options: @options })
+				.change $.proxy(_self.otherChanged, { input: input, container: elm, options: @options })
 
-			$($('input[name="' + inputName + '"]')).each ((ind, elm2) ->
+			$($('input[name="' + inputName + '"]')).each (ind, elm2) ->
 				elm2 = $ elm2
 
 				if elm2.is(input) is false
-					elm2.change @otherChanged.bind({ input: input, container: elm, options: @options })
+					elm2.change $.proxy(_self.otherChanged, { input: input, container: elm, options: @options })
 
 				return
-			).bind(@)
 
 			return
-		).bind(@)
 
 	otherChanged: (e) ->
 		if @input.is(":checked") is true
@@ -33,15 +32,14 @@ class Other
 		else
 			@container.addClass "hide"
 
-			@container.parents('.has-error').each ((ind, elm) ->
+			@container.parents('.has-error').each (ind, elm) ->
 				$(elm).removeClass 'has-error'
 				return
-			).bind(@)
 
 			@container.removeClass('has-error')
-			@container.children('.help-block').each ((ind, elm) ->
+			@container.children('.help-block').each (ind, elm) ->
 				$(elm).css 'display', 'none'
-			).bind(@)
+				return
 
 		# @options.validation.validation.check()
 		return

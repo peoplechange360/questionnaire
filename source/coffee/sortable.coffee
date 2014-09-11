@@ -63,16 +63,17 @@ class SortableClass
 		return
 
 	initOrder: () ->
+		_self = @
 
 		# Store position in loopable array
 		positions = []
 
 		# Loop all listing items
-		$("#"+@list+' li').each ((ind, elm) ->
+		$("#"+@list+' li').each (ind, elm) ->
 			selects = $(elm).find('option[selected="selected"]')
 
 			# Store selected state into the array
-			$(selects).each ((ind, elm) ->
+			$(selects).each (ind, elm) ->
 				curPosition = $(elm).data('position')
 
 				if positions[curPosition]?
@@ -80,15 +81,14 @@ class SortableClass
 				else
 					positions[curPosition] = elm;
 
-			).bind(@)
+				return
 
 			return
-		).bind(@)
 
 		# Prepend all listing items based on their selected state (1,2,3,4,5,6,etc)
-		$(positions).each ((ind, elm) ->
-			$("#"+@list).append $(elm).closest("li")
-		).bind(@)
+		$(positions).each (ind, elm) ->
+			$("#"+_self.list).append $(elm).closest("li")
+			return
 
 		return
 
@@ -107,7 +107,7 @@ class SortableClass
 
 	updateOrder: () ->
 
-		$("#"+@list+' li').each ((ind, elm) ->
+		$("#"+@list+' li').each (ind, elm) ->
 
 			selects = $(elm).find('select')
 			if selects.length > 0
@@ -119,6 +119,5 @@ class SortableClass
 					.prop 'selected', 'selected'
 
 			return
-		).bind(@)
 
 		return

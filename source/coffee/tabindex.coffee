@@ -5,7 +5,7 @@ class TabIndex
         @options = options || {}
         @form = options.form || @form || false
 
-        @form.find("input, button[data-type='next']").each ((index, element) ->
+        @form.find("input, button[data-type='next']").each (index, element) ->
 
             $ element
                 .attr "tabindex", (index + 1)
@@ -23,4 +23,4 @@ class TabIndex
                             .closest ".list-group-item"
                             .removeClass "focused"
 
-        ).bind(@)
+            return

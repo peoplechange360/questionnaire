@@ -9,3 +9,4 @@ class Questionnaire
         options.tabindex = new TabIndex(options);
 
         options.sortable = new SortableClass(options);
+        options.supportBrowser = BrowserDetection.init();
