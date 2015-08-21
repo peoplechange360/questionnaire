@@ -20,6 +20,10 @@ class Validation
 		@options = options || {};
 		@form = options.form || @form || false
 		@allowedAnswers = options.allowedAnswers || @allowedAnswers || null
+		@bootstrap.radioErrorText = options.radioErrorText || @bootstrap.radioErrorText
+		@bootstrap.checkboxErrorText = options.checkboxErrorText || @bootstrap.checkboxErrorText
+		@bootstrap.scaleErrorText = options.scaleErrorText || @bootstrap.scaleErrorText
+		@bootstrap.errorRequireFromGroup = options.errorRequireFromGroup || @bootstrap.errorRequireFromGroup
 
 		bootstrap = @bootstrap
 		_self = @
